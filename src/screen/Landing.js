@@ -30,7 +30,7 @@ function Login({ navigation }) {
                     <Button
                         color={'#696969'}
                         title="Workshop Registration"
-                    // onPress={() => navigation.navigate(PATH_AUTH.register)}
+                    onPress={() => navigation.navigate(PATH_AUTH.workshopregister)}
                     />
                 </View>
             </View>
