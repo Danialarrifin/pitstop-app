@@ -5,6 +5,7 @@ const PATH_AUTH = {
     landing: 'landing',
     forgotpassword: 'forgotpassword',
     resetpassword: 'resetpassword',
+    workshopregister: 'workshopregister',
 
 }
 const PATH_HOME = {
@@ -19,7 +20,9 @@ const PATH_HOME = {
     myappointment: 'myappointment',
     appointmentconfirmation: 'appointmentconfirmation',
     viewworkshop: 'viewworkshop',
-    items: 'items'
+    items: 'items',
+    myworkshop: 'myworkshop',
+    
 
 }
 

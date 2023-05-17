@@ -18,6 +18,8 @@ import MyAppointmentScreen from '../screen/MyAppointment'
 import AppointmentConfirmationScreen from '../screen/AppointmentConfirmation'
 import ViewWorkshopScreen from '../screen/ViewWorkshop'
 import ItemsScreen from '../screen/Items'
+import WorkshopRegisterScreen from '../screen/WorkshopRegister'
+import MyWorkshopScreen from '../screen/MyWorkshop';
 
 
 const Stack = createNativeStackNavigator();
@@ -60,9 +62,8 @@ const app = () => {
                         <Stack.Screen name={PATH_HOME.appointmentconfirmation} component={AppointmentConfirmationScreen} />
                         <Stack.Screen name={PATH_HOME.viewworkshop} component={ViewWorkshopScreen} />
                         <Stack.Screen name={PATH_HOME.items} component={ItemsScreen} />
-
-
-
+                        <Stack.Screen name={PATH_HOME.myworkshop} component={MyWorkshopScreen} />
+                      
 
                     {/* </Stack.Group>
                     
@@ -72,6 +73,8 @@ const app = () => {
                         <Stack.Screen name={PATH_AUTH.register} component={RegisterScreen} />
                         <Stack.Screen name={PATH_AUTH.forgotpassword} component={ForgotPasswordScreen} />
                         <Stack.Screen name={PATH_AUTH.resetpassword} component={ResetPasswordScreen} />
+                        <Stack.Screen name={PATH_AUTH.workshopregister} component={WorkshopRegisterScreen} />
+
 
 
                     </Stack.Group>
