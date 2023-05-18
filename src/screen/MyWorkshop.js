@@ -6,10 +6,10 @@ import AntDesgin from 'react-native-vector-icons/AntDesign'
 function MyWorkshop({ navigation }) {
     return (
         <>
-         <View style={{ backgroundColor: 'firebrick',  borderBottomEndRadius: 4, height: '10%', marginBottom: 10 }} >
+            <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%', marginBottom: 10 }} >
                 <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                    <AntDesgin name='logout' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={() => navigation.navigate(PATH_AUTH.workshopregister)}/>
-                    <Text style={{marginTop: 18, fontSize: 15, marginLeft: 120, color: 'white'}}> My Workshop</Text>
+                    <AntDesgin name='logout' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={() => navigation.navigate(PATH_AUTH.workshopregister)} />
+                    <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 120, color: 'white' }}> My Workshop</Text>
                 </View>
             </View>
             <View style={{ backgroundColor: 'firebrick', alignItems: 'center', justifyContent: 'center', borderBottomEndRadius: 4, height: '25%' }} >
@@ -74,20 +74,32 @@ function MyWorkshop({ navigation }) {
                     <Text style={{ color: 'black' }}>Workshop  Accident Repairs & Claim, Aircon Service, Battery Service, Body Repair, Car Polish, Car Wash & Wax, Engine Service, Exhaust Specialist, Maintenance, Mechanical Service, Paint Protection, Seat & Cushion Repair, Spray Painting, Tyre & Rims Service, Welding Service, Window Installation</Text>
                 </View>
             </View>
-            <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10}}>
+            {/* <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10}}>
                 <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Roboto-Light' }}>Address</Text>
             </View>
             <View style={{ backgroundColor: "white", height: 70, marginHorizontal: 5, borderRadius: 4, elevation: 20, }}>
                 <View style={{ flexDirection: 'row', marginVertical: 5, }}>
                     <Text style={{ color: 'black' }}>2, Jalan Utama 2/11, Seksyen 2, Taman Perindustrian Puchong Utama, 47100 Puchong, Selangor</Text>
                 </View>
-            </View>
+            </View> */}
             <View style={{ flex: 1, alignItems: 'center', marginTop: 10 }}>
                 <View style={{ width: '80%', height: '60%', }}>
                     <Button
                         color={'#b22222'}
-                        title="Services"
-                        onPress={() => navigation.navigate(PATH_HOME.items)}
+                        title="View Appointments"
+                        onPress={() => navigation.navigate(PATH_HOME.viewappointment)}
+                    />
+                    <Button
+                        color={'#b22222'}
+                        title="View Vehicles"
+                        onPress={() => navigation.navigate(PATH_HOME.viewvehicle)}
+                    />
+                </View>
+                <View style={{ width: '80%', height: '60%', }}>
+                    <Button
+                        color={'#b22222'}
+                        title="View Feedback"
+                        onPress={() => navigation.navigate(PATH_HOME.viewvehicle)}
                     />
                 </View>
             </View>
