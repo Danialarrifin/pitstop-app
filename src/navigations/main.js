@@ -20,7 +20,8 @@ import ViewWorkshopScreen from '../screen/ViewWorkshop'
 import ItemsScreen from '../screen/Items'
 import WorkshopRegisterScreen from '../screen/WorkshopRegister'
 import MyWorkshopScreen from '../screen/MyWorkshop';
-
+import ViewAppointmentScreen from '../screen/ViewAppointment'
+import ViewVehicleScreen from '../screen/ViewVehicle'
 
 const Stack = createNativeStackNavigator();
 
@@ -63,6 +64,10 @@ const app = () => {
                         <Stack.Screen name={PATH_HOME.viewworkshop} component={ViewWorkshopScreen} />
                         <Stack.Screen name={PATH_HOME.items} component={ItemsScreen} />
                         <Stack.Screen name={PATH_HOME.myworkshop} component={MyWorkshopScreen} />
+                        <Stack.Screen name={PATH_HOME.viewappointment} component={ViewAppointmentScreen} />
+                        <Stack.Screen name={PATH_HOME.viewvehicle} component={ViewVehicleScreen} />
+
+
                       
 
                     {/* </Stack.Group>

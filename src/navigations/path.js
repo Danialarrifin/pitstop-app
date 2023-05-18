@@ -22,6 +22,8 @@ const PATH_HOME = {
     viewworkshop: 'viewworkshop',
     items: 'items',
     myworkshop: 'myworkshop',
+    viewappointment: 'viewappointment',
+    viewvehicle: 'viewvehicle',
     
 
 }
