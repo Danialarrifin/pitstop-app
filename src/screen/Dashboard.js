@@ -10,13 +10,15 @@ function Dashboard({ navigation }) {
         <View style={{ flexDirection: 'row' }}>
 
           <View style={{ flex: 1 }}>
-            <Text style={{ color: 'white' }} onPress={() => navigation.navigate(PATH_HOME.profile)}>
+            <Text style={{ color: 'white', marginTop: 5 }} onPress={() => navigation.navigate(PATH_HOME.profile)}>
               <AntDesgin name='user' style={{ color: 'white', fontSize: 30, marginLeft: 10 }} />
             </Text>
           </View>
 
           <View style={{}}>
-            <Text style={{ color: 'white', marginRight: 10, fontSize: 20 }} onPress={() => navigation.navigate(PATH_AUTH.landing)}>Sign out</Text>
+          <Text style={{ color: 'white', marginRight: 5, marginTop: 5 }} onPress={() => navigation.navigate(PATH_HOME.profile)}>
+              <AntDesgin name='logout' style={{ color: 'white', fontSize: 25, marginRight: 10, }} />
+            </Text>
           </View>
 
         </View>
