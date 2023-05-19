@@ -16,7 +16,7 @@ function Dashboard({ navigation }) {
           </View>
 
           <View style={{}}>
-          <Text style={{ color: 'white', marginRight: 5, marginTop: 5 }} onPress={() => navigation.navigate(PATH_HOME.profile)}>
+          <Text style={{ color: 'white', marginRight: 5, marginTop: 5 }} onPress={() => navigation.navigate(PATH_AUTH.landing)}>
               <AntDesgin name='logout' style={{ color: 'white', fontSize: 25, marginRight: 10, }} />
             </Text>
           </View>
