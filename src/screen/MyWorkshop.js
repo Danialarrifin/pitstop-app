@@ -88,6 +88,7 @@ function MyWorkshop({ navigation }) {
                         color={'#b22222'}
                         title="View Appointments"
                         onPress={() => navigation.navigate(PATH_HOME.viewappointment)}
+                        style={{marginBottom: 10}}
                     />
                     <Button
                         color={'#b22222'}
@@ -95,13 +96,13 @@ function MyWorkshop({ navigation }) {
                         onPress={() => navigation.navigate(PATH_HOME.viewvehicle)}
                     />
                 </View>
-                <View style={{ width: '80%', height: '60%', }}>
+                {/* <View style={{ width: '80%', height: '60%', }}>
                     <Button
                         color={'#b22222'}
                         title="View Feedback"
                         onPress={() => navigation.navigate(PATH_HOME.viewvehicle)}
                     />
-                </View>
+                </View> */}
             </View>
         </>
     );
