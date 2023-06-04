@@ -24,7 +24,8 @@ const PATH_HOME = {
     myworkshop: 'myworkshop',
     viewappointment: 'viewappointment',
     viewvehicle: 'viewvehicle',
-    completedappointment: 'completedappointment'
+    completedappointment: 'completedappointment',
+    viewfeedback: 'viewfeedback'
     
 
 }
