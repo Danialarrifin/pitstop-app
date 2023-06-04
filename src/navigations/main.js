@@ -23,6 +23,7 @@ import MyWorkshopScreen from '../screen/MyWorkshop';
 import ViewAppointmentScreen from '../screen/ViewAppointment'
 import ViewVehicleScreen from '../screen/ViewVehicle'
 import CompletedAppointmentScreen from '../screen/CompletedAppointment'
+import ViewFeedbackScreen from '../screen/ViewFeedback'
 
 const Stack = createNativeStackNavigator();
 
@@ -68,6 +69,8 @@ const app = () => {
                         <Stack.Screen name={PATH_HOME.viewappointment} component={ViewAppointmentScreen} />
                         <Stack.Screen name={PATH_HOME.viewvehicle} component={ViewVehicleScreen} />
                         <Stack.Screen name={PATH_HOME.completedappointment} component={CompletedAppointmentScreen} />
+                        <Stack.Screen name={PATH_HOME.viewfeedback} component={ViewFeedbackScreen} />
+
 
 
 
