@@ -1,52 +1,175 @@
-import { Button, View, Text, TextInput, Image } from 'react-native';
-import { PATH_AUTH , PATH_HOME} from '../navigations/path';
-import AntDesgin from 'react-native-vector-icons/AntDesign'
+import { Button, View, Text } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { PATH_AUTH, PATH_HOME } from '../navigations/path';
+import AntDesgin from 'react-native-vector-icons/AntDesign';
+import axiosInstance from '../utils/axios';
+
+
 function ViewVehicle({ navigation }) {
-    return (
-        <>
-         <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }} >
-                <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                    <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={() => navigation.navigate(PATH_HOME.myworkshop)} />
-                    <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 130, color: 'white' }}> View Vehicle</Text>
-                </View>
+  const [vehicle, setVehicle] = useState([]);
+
+  useEffect(() => {
+    getAllVehicle();
+  });
+
+  const getAllVehicle = async () => {
+    try {
+      const response = await axiosInstance.get(
+        "/vehicles",
+        {
+          headers: {
+            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbjNAdGVzdC5jb20iLCJpYXQiOjE2ODU4OTU4MzcsImV4cCI6MTY4NTk4MjIzN30.cxoBc4rO7-3Pli_emBOXDhhX-jpqFaevdW52kHQUtE0`
+          }
+        }
+      );
+      console.log('response vehicle', response.data);
+      if (response.data.length > 0)
+        setVehicle(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  return (
+    <>
+      <View
+        style={{
+          backgroundColor: 'firebrick',
+          borderBottomEndRadius: 4,
+          height: '10%',
+        }}>
+        <View style={{ flexDirection: 'row', marginVertical: 5 }}>
+          <AntDesgin
+            name="arrowleft"
+            style={{
+              color: 'white',
+              fontSize: 20,
+              marginTop: 20,
+              marginLeft: 10,
+            }}
+            onPress={() => navigation.navigate(PATH_HOME.myworkshop)}
+          />
+          <Text
+            style={{
+              marginTop: 18,
+              fontSize: 15,
+              marginLeft: 130,
+              color: 'white',
+            }}>
+            {' '}
+            View Vehicle
+          </Text>
+        </View>
+      </View>
+      <View
+        style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
+        <Text
+          style={{
+            fontSize: 20,
+            marginBottom: 10,
+            color: 'firebrick',
+            fontFamily: 'Roboto-Bold',
+          }}>
+          Vehicles
+        </Text>
+      </View>
+ 
+      <View style={{ flex: 1, padding: 10 }}>
+        <View style={{ flex: 1 }}>
+          <View
+            style={{
+              backgroundColor: 'grey',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              width: '100%',
+              height: 50,
+            }}>
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderWidth: 2,
+                flex: 1,
+                height: '100%',
+                borderRightWidth: 0,
+              }}>
+              <Text>Manufacturer</Text>
             </View>
-            <View style={{ backgroundColor: 'white', alignItems: 'center', borderRadius: 50, height: '25%', marginLeft: 40, marginRight: 40, marginBottom: 10, marginTop: 50, elevation: 10, justifyContent: 'center' }}>
-                <View style={{ width: '30%', backgroundColor: 'white', height: '20%', justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ color: 'firebrick' }}>Suzuki Swift</Text>
-                </View>
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderWidth: 2,
+                flex: 1,
+                height: '100%',
+                borderRightWidth: 0,
+              }}>
+              <Text>Model</Text>
             </View>
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <View style={{ backgroundColor: "white", width: '30%', marginHorizontal: 5, borderRadius: 4, alignItems: 'center', justifyContent: 'center', elevation: 20, marginBottom: 10, }}>
-                    <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                        <Text style={{ color: 'firebrick', marginRight: 5 }}><AntDesgin name='car' style={{ color: 'firebrick', fontSize: 20 }} /></Text>
-                        <Text style={{ color: 'firebrick' }}>WWF1738</Text>
-                    </View>
-                </View>
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderWidth: 2,
+                flex: 1,
+                height: '100%',
+              }}>
+              <Text>Plate Number</Text>
             </View>
-            <View style={{ backgroundColor: 'white', alignItems: 'center', borderRadius: 50, height: '25%', marginLeft: 40, marginRight: 40, marginBottom: 10, elevation: 10, justifyContent: 'center', marginTop: 10 }}>
-                <View style={{ width: '30%', backgroundColor: 'white', height: '20%', justifyContent: 'center', alignItems: 'center' }}>
-                    <Text style={{ color: 'firebrick' }}>Perodua Myvi</Text>
+          </View>
+
+          {vehicle.length > 0 ?
+            vehicle.map((item) =>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: '100%',
+                  height: 40,
+                }}>
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    borderWidth: 2,
+                    flex: 1,
+                    height: '100%',
+                    borderTopWidth: 0,
+                    borderRightWidth: 0,
+                  }}>
+                  <Text>{item.manufacturer}</Text>
                 </View>
-            </View>
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <View style={{ backgroundColor: "white", width: '30%', marginHorizontal: 5, borderRadius: 4, alignItems: 'center', justifyContent: 'center', elevation: 20, marginBottom: 10, }}>
-                    <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                        <Text style={{ color: 'firebrick', marginRight: 5 }}><AntDesgin name='car' style={{ color: 'firebrick', fontSize: 20 }} /></Text>
-                        <Text style={{ color: 'firebrick' }}>VHL9808</Text>
-                    </View>
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    borderWidth: 2,
+                    flex: 1,
+                    height: '100%',
+                    borderTopWidth: 0,
+                    borderRightWidth: 0,
+                  }}>
+                  <Text>{item.model}</Text>
                 </View>
-            </View>
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <View style={{ width: '80%', height: '60%', }}>
-                    <Button
-                        color={'#b22222'}
-                        title="Update Vehicle Status"
-                    onPress={() => navigation.navigate(PATH_HOME.viewappointment)}
-                    />
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    borderWidth: 2,
+                    flex: 1,
+                    height: '100%',
+                    borderTopWidth: 0,
+                  }}>
+                  <Text>{item.plate_num}</Text>
                 </View>
-            </View>
-        </>
-    );
+              </View>
+            ) : null}
+        </View>
+      </View>
+    </>
+  );
 }
 
 export default ViewVehicle;
