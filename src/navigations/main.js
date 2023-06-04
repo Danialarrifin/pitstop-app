@@ -71,10 +71,7 @@ const app = () => {
                         <Stack.Screen name={PATH_HOME.completedappointment} component={CompletedAppointmentScreen} />
                         <Stack.Screen name={PATH_HOME.viewfeedback} component={ViewFeedbackScreen} />
 
-
-
-
-                      
+     
 
                     {/* </Stack.Group>
                     
