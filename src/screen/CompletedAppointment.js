@@ -7,18 +7,18 @@ import AntDesgin from 'react-native-vector-icons/AntDesign'
 function CompletedAppointment({ navigation }) {
     return (
         <>
-            <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }} >
+            <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }}  >
                 <View style={{ flexDirection: 'row', marginVertical: 5 }}>
                     <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={() => navigation.navigate(PATH_HOME.viewappointment)} />
                     <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 100, color: 'white' }}> Completed Appointments</Text>
                 </View>
             </View>
             <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
-                <Text style={{ fontSize: 20, marginBottom: 10, color: 'firebrick', fontFamily: 'Roboto-Bold' }} onPress={() => navigation.navigate(PATH_HOME.dashboard)}> View Appointments</Text>
+                <Text style={{ fontSize: 20, marginBottom: 10, color: 'firebrick', fontFamily: 'Roboto-Bold' }} > View Appointments</Text>
             </View>
 
             <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 30, height: '35%', marginLeft: 30, marginBottom: 10, elevation: 10, justifyContent: 'center', width: '85%' }}>
-                <Text style={{ fontSize: 20, marginBottom: 5, color: 'white' }}>Serv Malaysia</Text>
+                <Text style={{ fontSize: 20, marginBottom: 5, color: 'white' }} >Serv Malaysia</Text>
                 <View style={{ flexDirection: 'row', marginVertical: 5 }}>
                     <AntDesgin name='calendar' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
                     <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>4/11/2022</Text>
@@ -35,7 +35,14 @@ function CompletedAppointment({ navigation }) {
                     <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>Status:</Text>
                     <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20, fontFamily: 'Roboto-BoldItalic' }}>Completed</Text>
                 </View>
-
+                <View style={{marginBottom: 5}}>
+                    <Button
+                        color={'black'}
+                        title="View Feedback"
+                    onPress={() => navigation.navigate(PATH_HOME.viewfeedback)}
+                    />
+                </View>
+           
             </View>
             <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 30, height: '35%', marginLeft: 30, elevation: 10, justifyContent: 'center', width: '85%' }}>
                 <Text style={{ fontSize: 20, marginBottom: 5, color: 'white' }}>Pomen</Text>
