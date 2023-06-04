@@ -1,106 +1,53 @@
 import { Button, View, Text } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 
-
+const headers =['Workshop', 'Date', 'Time', 'Services', 'Status']
+const rows= [
+    ['Pohleh Workshop', '29/11/2022', '11.00 am - 12.30 pm', 'Brake Pad Change', 'Accept Reject'],
+    ['Pohleh Workshop', '29/11/2022', '11.00 am - 12.30 pm', 'Brake Pad Change', 'Done'],
+    ['Pohleh Workshop', '29/11/2022', '11.00 am - 12.30 pm', 'Brake Pad Change', 'Accept Reject'], 
+]
 
 function ViewAppointment({ navigation }) {
     return (
         <>
-            <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }} >
+            <View style={{ backgroundColor: 'firebrick',  borderBottomEndRadius: 4, height: '10%' }} >
                 <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                    <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={() => navigation.navigate(PATH_HOME.myworkshop)} />
-                    <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 100, color: 'white' }}> View Appointments</Text>
+                    <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={() => navigation.navigate(PATH_HOME.myworkshop)}/>
+                    <Text style={{marginTop: 18, fontSize: 15, marginLeft: 110, color: 'white'}}> View Appointment</Text>
                 </View>
             </View>
             <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
-                <Text style={{ fontSize: 20, marginBottom: 10, color: 'firebrick', fontFamily: 'Roboto-Bold' }} onPress={() => navigation.navigate(PATH_HOME.dashboard)}> View Appointments</Text>
+                <Text style={{ fontSize: 20, marginBottom: 10, color: 'firebrick', fontFamily: 'Roboto-Bold' }} >Appointments</Text>
             </View>
-            <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 30, height: '35%', marginLeft: 30, marginBottom: 10, elevation: 10, justifyContent: 'center', width: '85%' }}>
-                <Text style={{ fontSize: 20, marginBottom: 5, color: 'white' }}>Pohleh Workshop Sdn Bhd</Text>
-                <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                    <AntDesgin name='calendar' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>29/11/2022</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <AntDesgin name='clockcircleo' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>11.00 am - 12.30 pm</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <AntDesgin name='car' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>Brake Pad Change and Flat Tyre</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>Status:</Text>
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20, fontFamily: 'Roboto-Bold' }}>Accepted</Text>
-                </View>
-                <View>
-                    
-                </View>
-                <View style={{ width: '30%', height: '15%', flexDirection: 'row', marginVertical: 5, justifyContent: 'center'}}>
-                    <Button
-                        color={'grey'}
-                        title="Done"
-                        onPress={() => navigation.navigate(PATH_HOME.completedappointment)}
-                   
-                    />
-                    <Button
-                        color={'lightcoral'}
-                        title="Reject"
-                    />
-                     <Button
-                        color={'green'}
-                        title="Accept"
-                   
-                    />
-                </View>
-            </View>
-
-            <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 30, height: '35%', marginLeft: 30, elevation: 10, justifyContent: 'center', width: '85%' }}>
-                <Text style={{ fontSize: 20, marginBottom: 5, color: 'white' }}>Serv Malaysia</Text>
-                <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                    <AntDesgin name='calendar' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>4/11/2022</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <AntDesgin name='clockcircleo' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>11.00 am - 12.30 pm</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <AntDesgin name='car' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>Engine Overhaul</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>Status:</Text>
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20, fontFamily: 'Roboto-Bold' }}>Rejected</Text>
-                </View>
-                <View style={{ width: '30%', height: '15%', flexDirection: 'row', marginVertical: 5, justifyContent:'center' }}>
-                <Button
-                        color={'grey'}
-                        title="Done"
-                        onPress={() => navigation.navigate(PATH_HOME.completedappointment)}
-                   
-                    />
-                    <Button
-                        color={'green'}
-                        title="Accept"
-                     
-                    />
-                    <Button
-                        color={'lightcoral'}
-                        title="Reject"
-                    />
-                </View>
-
-            </View>
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <View style={{ width: '80%', height: '60%', }}>
-                    <Button
-                        color={'#b22222'}
-                        title="Completed Appointments"
+            <View style={{width: '55%', marginLeft: 173}}>
+            <Button
+                    color={'#b22222'}
+                    title="Completed Appointments"
                     onPress={() => navigation.navigate(PATH_HOME.completedappointment)}
+                />
+            </View>
+            <View style={{flex: 1, padding: 10}}>
+                <Table borderStyle={{borderWidth: 1}}>
+                    <Row
+                    data={headers}
+                    style={{
+                        backgroundColor:'firebrick'
+                    }}
+                    height={40}
+                    flexArr={[1,1,1,1,1]}
+                    textStyle={{
+                        textAlign: 'center'
+                    }}
                     />
-                </View>
+                    <TableWrapper>
+                        <Rows data={rows} heightArr={[50, 50, 50, 50,50]} flexArr={[1,1,1,1,1]} textStyle={{
+                            textAlign: 'center'
+                        }}/>
+                    </TableWrapper>
+                </Table>
             </View>
         </>
     );
