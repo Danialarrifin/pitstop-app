@@ -1,10 +1,10 @@
 import { Button, View, Text, TextInput, Image } from 'react-native';
-import { PATH_AUTH , PATH_HOME} from '../navigations/path';
+import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
 function Vehicle({ navigation }) {
     return (
         <>
-         <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }} >
+            <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }} >
                 <View style={{ flexDirection: 'row', marginVertical: 5 }}>
                     <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={() => navigation.navigate(PATH_HOME.dashboard)} />
                     <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 115, color: 'white' }}> View My Vehicle</Text>
@@ -44,7 +44,7 @@ function Vehicle({ navigation }) {
                     <Button
                         color={'#b22222'}
                         title="Update Vehicle"
-                    onPress={() => navigation.navigate(PATH_HOME.addvehicle)}
+                        onPress={() => navigation.navigate(PATH_HOME.addvehicle)}
                     />
                 </View>
             </View>
