@@ -78,7 +78,7 @@ function ViewVehicle({ navigation }) {
         <View style={{ flex: 1 }}>
           <View
             style={{
-              backgroundColor: 'grey',
+              backgroundColor: 'firebrick',
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
@@ -94,7 +94,7 @@ function ViewVehicle({ navigation }) {
                 height: '100%',
                 borderRightWidth: 0,
               }}>
-              <Text>Manufacturer</Text>
+              <Text style={{color: 'white'}}>Manufacturer</Text>
             </View>
             <View
               style={{
@@ -105,7 +105,7 @@ function ViewVehicle({ navigation }) {
                 height: '100%',
                 borderRightWidth: 0,
               }}>
-              <Text>Model</Text>
+              <Text style={{color: 'white'}}>Model</Text>
             </View>
             <View
               style={{
@@ -115,7 +115,7 @@ function ViewVehicle({ navigation }) {
                 flex: 1,
                 height: '100%',
               }}>
-              <Text>Plate Number</Text>
+              <Text style={{color: 'white'}}>Plate Number</Text>
             </View>
           </View>
 
