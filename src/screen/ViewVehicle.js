@@ -18,7 +18,7 @@ function ViewVehicle({ navigation }) {
         "/vehicles",
         {
           headers: {
-            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbjNAdGVzdC5jb20iLCJpYXQiOjE2ODU4OTU4MzcsImV4cCI6MTY4NTk4MjIzN30.cxoBc4rO7-3Pli_emBOXDhhX-jpqFaevdW52kHQUtE0`
+            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbjNAdGVzdC5jb20iLCJpYXQiOjE2ODYwMTM1NzEsImV4cCI6MTY4NjA5OTk3MX0.HaobKuVG0bWPPYyjPmaqLK823cP8w7fLgUU4JbJYpJs`
           }
         }
       );
