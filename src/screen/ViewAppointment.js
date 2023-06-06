@@ -1,53 +1,216 @@
 import { Button, View, Text } from 'react-native';
+import React, { useEffect, useState } from 'react';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
-import AntDesgin from 'react-native-vector-icons/AntDesign'
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
+import AntDesgin from 'react-native-vector-icons/AntDesign';
+import axiosInstance from '../utils/axios';
 
-const headers =['Workshop', 'Date', 'Time', 'Services', 'Status']
-const rows= [
-    ['Pohleh Workshop', '29/11/2022', '11.00 am - 12.30 pm', 'Brake Pad Change', 'Accept Reject'],
-    ['Pohleh Workshop', '29/11/2022', '11.00 am - 12.30 pm', 'Brake Pad Change', 'Done'],
-    ['Pohleh Workshop', '29/11/2022', '11.00 am - 12.30 pm', 'Brake Pad Change', 'Accept Reject'], 
-]
 
 function ViewAppointment({ navigation }) {
+    const [appointment, setAppointment] = useState([]);
+
+    useEffect(() => {
+        getAllAppointment();
+    });
+
+    const getAllAppointment = async () => {
+        try {
+            const response = await axiosInstance.get(
+                "/appointments",
+                {
+                    headers: {
+                        'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbjNAdGVzdC5jb20iLCJpYXQiOjE2ODYwNjc4MDUsImV4cCI6MTY4NjE1NDIwNX0.9_LMS8B3rttONruC_BFoUtcgHuVeYu9RApnEdaU0UhY`
+                    }
+                }
+            );
+            console.log('response appointment', response.data);
+            if (response.data.length > 0)
+              setAppointment(response.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     return (
         <>
-            <View style={{ backgroundColor: 'firebrick',  borderBottomEndRadius: 4, height: '10%' }} >
+            <View
+                style={{
+                    backgroundColor: 'firebrick',
+                    borderBottomEndRadius: 4,
+                    height: '10%',
+                }}>
                 <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                    <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={() => navigation.navigate(PATH_HOME.myworkshop)}/>
-                    <Text style={{marginTop: 18, fontSize: 15, marginLeft: 110, color: 'white'}}> View Appointment</Text>
+                    <AntDesgin
+                        name="arrowleft"
+                        style={{
+                            color: 'white',
+                            fontSize: 20,
+                            marginTop: 20,
+                            marginLeft: 10,
+                        }}
+                        onPress={() => navigation.navigate(PATH_HOME.myworkshop)}
+                    />
+                    <Text
+                        style={{
+                            marginTop: 18,
+                            fontSize: 15,
+                            marginLeft: 130,
+                            color: 'white',
+                        }}>
+                        {' '}
+                        View Appointment
+                    </Text>
                 </View>
             </View>
-            <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
-                <Text style={{ fontSize: 20, marginBottom: 10, color: 'firebrick', fontFamily: 'Roboto-Bold' }} >Appointments</Text>
-            </View>
-            <View style={{width: '55%', marginLeft: 173}}>
-            <Button
-                    color={'#b22222'}
-                    title="Completed Appointments"
-                    onPress={() => navigation.navigate(PATH_HOME.completedappointment)}
-                />
-            </View>
-            <View style={{flex: 1, padding: 10}}>
-                <Table borderStyle={{borderWidth: 1}}>
-                    <Row
-                    data={headers}
+            <View
+                style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
+                <Text
                     style={{
-                        backgroundColor:'firebrick'
-                    }}
-                    height={40}
-                    flexArr={[1,1,1,1,1]}
-                    textStyle={{
-                        textAlign: 'center'
-                    }}
-                    />
-                    <TableWrapper>
-                        <Rows data={rows} heightArr={[50, 50, 50, 50,50]} flexArr={[1,1,1,1,1]} textStyle={{
-                            textAlign: 'center'
-                        }}/>
-                    </TableWrapper>
-                </Table>
+                        fontSize: 20,
+                        marginBottom: 10,
+                        color: 'firebrick',
+                        fontFamily: 'Roboto-Bold',
+                    }}>
+                    Appointments
+                </Text>
+            </View>
+
+            <View style={{ flex: 1, padding: 10 }}>
+                <View style={{ flex: 1 }}>
+                    <View
+                        style={{
+                            backgroundColor: 'firebrick',
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            width: '100%',
+                            height: 50,
+                        }}>
+                        <View
+                            style={{
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderWidth: 2,
+                                flex: 1,
+                                height: '100%',
+                                borderRightWidth: 0,
+                            }}>
+                            <Text style={{ color: 'white' }}>Date</Text>
+                        </View>
+                        <View
+                            style={{
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderWidth: 2,
+                                flex: 1,
+                                height: '100%',
+                                borderRightWidth: 0,
+                            }}>
+                            <Text style={{ color: 'white' }}>Time Slot</Text>
+                        </View>
+                        <View
+                            style={{
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderWidth: 2,
+                                flex: 1,
+                                height: '100%',
+                            }}>
+                            <Text style={{ color: 'white' }}>Vehicle </Text>
+                        </View>
+                        <View
+                            style={{
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderWidth: 2,
+                                flex: 1,
+                                height: '100%',
+                            }}>
+                            <Text style={{ color: 'white' }}>Service </Text>
+                        </View>
+                        <View
+                            style={{
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderWidth: 2,
+                                flex: 1,
+                                height: '100%',
+                            }}>
+                            <Text style={{ color: 'white' }}>Status </Text>
+                        </View>
+                    </View>
+
+                    {appointment.length > 0 ?
+                         appointment.map((item) =>
+                         { return (
+
+                            <View
+                                style={{
+                                    flexDirection: 'row',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    width: '100%',
+                                    height: 40,
+                                }}>
+                                <View
+                                    style={{
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        borderWidth: 2,
+                                        flex: 1,
+                                        height: '100%',
+                                        borderTopWidth: 0,
+                                        borderRightWidth: 0,
+                                    }}>
+                                    <Text>{item.date}</Text>
+                                </View>
+                                <View
+                                    style={{
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        borderWidth: 2,
+                                        flex: 1,
+                                        height: '100%',
+                                        borderTopWidth: 0,
+                                        borderRightWidth: 0,
+                                    }}>
+                                    <Text>{item.time_slot_id}</Text>
+                                </View>
+                                <View
+                                    style={{
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        borderWidth: 2,
+                                        flex: 1,
+                                        height: '100%',
+                                        borderTopWidth: 0,
+                                    }}>
+                                    <Text>{item.vehicle_id}</Text>
+                                </View>
+                                <View
+                                    style={{
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        borderWidth: 2,
+                                        flex: 1,
+                                        height: '100%',
+                                        borderTopWidth: 0,
+                                    }}>
+                                    <Text>{item.service_id}</Text>
+                                </View>  
+                                <View
+                                    style={{
+                                        justifyContent: 'center',
+                                        alignItems: 'center',
+                                        borderWidth: 2,
+                                        flex: 1,
+                                        height: '100%',
+                                        borderTopWidth: 0,
+                                    }}>
+                                    <Text>{item.status}</Text>
+                                </View>
+                            </View>
+                        )}) : null }
+                </View>
             </View>
         </>
     );
