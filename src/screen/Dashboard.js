@@ -54,7 +54,7 @@ function Dashboard({ navigation }) {
           <View style={{ backgroundColor: "white", flex: 1, height: 60, marginHorizontal: 5, borderRadius: 4, alignItems: 'center', justifyContent: 'center', elevation: 20 }}>
           <View style={{ flexDirection: 'row', marginVertical: 5, }}>
               <Text style={{color: 'firebrick', marginRight: 5 }}><AntDesgin name='find' style={{ color: 'firebrick', fontSize: 20 }} /></Text>
-              <Text style={{ color: 'firebrick' }} onPress={() => navigation.navigate(PATH_HOME.myappointment)}>Road Assistance</Text>
+              <Text style={{ color: 'firebrick' }} onPress={() => navigation.navigate(PATH_HOME.myappointment)}>My Appointment</Text>
             </View>
           </View>
           <View style={{ backgroundColor: "firebrick", flex: 1, height: 60, marginHorizontal: 5, borderRadius: 4, alignItems: 'center', justifyContent: 'center', elevation: 20 }}>
