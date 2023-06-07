@@ -77,7 +77,7 @@ function Dashboard({ navigation }) {
         </View>
 
         <View style={{ width: '80%', height: '20%', backgroundColor: 'red', margin: 5, alignItems: 'center', justifyContent: 'center', backgroundColor: 'gainsboro' }}>
-          <Text>What is PITSTOP Road Assistance?</Text>
+          <Text>What is PITSTOP?</Text>
         </View>
 
         <View style={{ width: '80%', height: '20%', backgroundColor: 'red', margin: 5, alignItems: 'center', justifyContent: 'center', backgroundColor: 'gainsboro' }}>
