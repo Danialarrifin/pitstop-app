@@ -1,8 +1,11 @@
-import { Button, View, Text, Image } from 'react-native';
+import React, {useContext} from 'react';
+import {AuthContext} from '../context/AuthContext';
+import { Button, View, Text, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-shadow-cards';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
 function Dashboard({ navigation }) {
+  const {logout} = useContext(AuthContext);
   return (
     <>
       <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderBottomEndRadius: 4, height: '40%' }} >
@@ -15,10 +18,10 @@ function Dashboard({ navigation }) {
             </Text>
           </View>
 
-          <View style={{}}>
-          <Text style={{ color: 'white', marginRight: 5, marginTop: 5 }} onPress={() => navigation.navigate(PATH_AUTH.landing)}>
+          <View>
+          <TouchableOpacity style={{ backgroundColor: 'firebrick', padding: 5 }} onPress={logout} >
               <AntDesgin name='logout' style={{ color: 'white', fontSize: 25, marginRight: 10, }} />
-            </Text>
+            </TouchableOpacity>
           </View>
 
         </View>
