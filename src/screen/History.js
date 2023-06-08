@@ -1,16 +1,18 @@
+import React, { useContext, useState,useEffect } from 'react';
+import { AuthContext } from '../context/AuthContext';
 import { Button, View, Text } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
-import React, { useEffect, useState } from 'react';
 import axiosInstance from '../utils/axios';
 
 
 function History({ navigation }) {
 const [transaction, setTransaction] = useState([]);
+const { login, userInfo } = useContext(AuthContext);
 
   useEffect(() => {
     getAllTransaction();
-  });
+  }, []);
 
   const getAllTransaction = async () => {
     try {
@@ -18,7 +20,7 @@ const [transaction, setTransaction] = useState([]);
         "/transactions",
         {
           headers: {
-            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbjNAdGVzdC5jb20iLCJpYXQiOjE2ODYyMTI3NDksImV4cCI6MTY4NjI5OTE0OX0.2IuVUKOac84rNPHyZ3mAL5GPoSw0tvtKjhAESA-m_Ak`
+            'Authorization': `Bearer ${userInfo?.access_token}`
           }
         }
       );
