@@ -1,6 +1,8 @@
+import React, {useContext} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { PATH_AUTH, PATH_HOME } from './path';
+import {AuthContext} from '../context/AuthContext';
 import LandingScreen from '../screen/Landing'
 import LoginScreen from '../screen/Login';
 import RegisterScreen from '../screen/Register';
@@ -26,6 +28,7 @@ import CompletedAppointmentScreen from '../screen/CompletedAppointment'
 import ViewFeedbackScreen from '../screen/ViewFeedback'
 
 const Stack = createNativeStackNavigator();
+;
 
 // const main = () => {
 //     return (
@@ -45,18 +48,20 @@ const Stack = createNativeStackNavigator();
 //     )
 // }
 
-const app = () => {
-    const isLoggedIn = false;
+const navigation = () => {
 
+    const {userInfo} = useContext(AuthContext);
+    console.log(userInfo)
     return (
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{ headerShown: false}} initialRouteName={PATH_AUTH.landing}>
-                {/* {isLoggedIn ? */}
-                    <Stack.Group>
+            <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={PATH_AUTH.landing}>
+           
+                {userInfo.access_token ?
+                    <Stack.Group initialRouteName={userInfo?.role === 'customer' ? PATH_HOME.profile : PATH_HOME.myworkshop}>
                         <Stack.Screen name={PATH_HOME.dashboard} component={DashboardScreen} />
                         <Stack.Screen name={PATH_HOME.profile} component={ProfileScreen} />
                         <Stack.Screen name={PATH_HOME.workshop} component={WorkshopScreen} />
-                        <Stack.Screen name={PATH_HOME.appointment} component={AppointmentScreen}/>
+                        <Stack.Screen name={PATH_HOME.appointment} component={AppointmentScreen} />
                         <Stack.Screen name={PATH_HOME.assistance} component={AssistanceScreen} />
                         <Stack.Screen name={PATH_HOME.history} component={HistoryScreen} />
                         <Stack.Screen name={PATH_HOME.vehicle} component={VehicleScreen} />
@@ -70,27 +75,21 @@ const app = () => {
                         <Stack.Screen name={PATH_HOME.viewvehicle} component={ViewVehicleScreen} />
                         <Stack.Screen name={PATH_HOME.completedappointment} component={CompletedAppointmentScreen} />
                         <Stack.Screen name={PATH_HOME.viewfeedback} component={ViewFeedbackScreen} />
-
-     
-
-                    {/* </Stack.Group>
-                    
-                    <Stack.Group> */}
-                         <Stack.Screen name={PATH_AUTH.landing} component={LandingScreen} />
+                    </Stack.Group>
+                    :
+                    <Stack.Group>
+                        <Stack.Screen name={PATH_AUTH.landing} component={LandingScreen} />
                         <Stack.Screen name={PATH_AUTH.login} component={LoginScreen} />
                         <Stack.Screen name={PATH_AUTH.register} component={RegisterScreen} />
                         <Stack.Screen name={PATH_AUTH.forgotpassword} component={ForgotPasswordScreen} />
                         <Stack.Screen name={PATH_AUTH.resetpassword} component={ResetPasswordScreen} />
                         <Stack.Screen name={PATH_AUTH.workshopregister} component={WorkshopRegisterScreen} />
-
-
-
                     </Stack.Group>
 
-                {/* } */}
+                }
             </Stack.Navigator>
         </NavigationContainer>
     )
 }
 
-export default app;
+export default navigation;
