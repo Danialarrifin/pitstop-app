@@ -18,7 +18,7 @@ function ViewAppointment({ navigation }) {
                 "/appointments",
                 {
                     headers: {
-                        'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbjNAdGVzdC5jb20iLCJpYXQiOjE2ODYxMTk0NjUsImV4cCI6MTY4NjIwNTg2NX0.OLaKGGIy0M9uOiYq3m2aO3-cB0FR7h4TqqLny9biYfU`
+                        'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbjNAdGVzdC5jb20iLCJpYXQiOjE2ODYyMTI3NDksImV4cCI6MTY4NjI5OTE0OX0.2IuVUKOac84rNPHyZ3mAL5GPoSw0tvtKjhAESA-m_Ak`
                     }
                 }
             );
