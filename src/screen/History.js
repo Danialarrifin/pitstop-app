@@ -24,7 +24,7 @@ const { login, userInfo } = useContext(AuthContext);
           }
         }
       );
-      console.log('response vehicle', response.data);
+      console.log('response transaction', response.data);
       if (response.data.length > 0)
         setTransaction(response.data);
     } catch (err) {
