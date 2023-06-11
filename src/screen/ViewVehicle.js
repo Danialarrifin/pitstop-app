@@ -18,7 +18,7 @@ function ViewVehicle({ navigation }) {
         "/vehicles",
         {
           headers: {
-            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJhZG1pbjNAdGVzdC5jb20iLCJpYXQiOjE2ODYyMTI3NDksImV4cCI6MTY4NjI5OTE0OX0.2IuVUKOac84rNPHyZ3mAL5GPoSw0tvtKjhAESA-m_Ak`
+            'Authorization': `Bearer ${userInfo?.access_token}`
           }
         }
       );
