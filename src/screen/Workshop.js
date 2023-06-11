@@ -1,7 +1,38 @@
-import { Button, View, Text, TextInput, Image } from 'react-native';
+import { Button, View, Text, TextInput, Image, ScrollView } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
+import axiosInstance from '../utils/axios';
+import React, { useContext, useState, useEffect } from 'react';
+import { AuthContext } from '../context/AuthContext';
+
+
+
+
 function Workshop({ navigation }) {
+  const [workshop, setWorkshop] = useState([]);
+  const { userInfo } = useContext(AuthContext);
+
+  useEffect(() => {
+    getAllWorkshop();
+  }, []);
+
+  const getAllWorkshop = async () => {
+    try {
+      const response = await axiosInstance.get(
+        "/workshops",
+        {
+          headers: {
+            'Authorization': `Bearer ${userInfo?.access_token}`
+          }
+        }
+      );
+      console.log('response workshop', response.data);
+      if (response.data.length > 0)
+        setWorkshop(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   return (
     <>
       <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }} >
@@ -10,30 +41,16 @@ function Workshop({ navigation }) {
           <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 140, color: 'white' }}> Workshops</Text>
         </View>
       </View>
-      {/* <View style={{ alignItems: 'center', justifyContent: 'center', height: '10%', }}>
-        <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-          <TextInput style={{ height: 50, width: '70%', borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4, }}></TextInput>
-        </View>
-      </View> */}
-      <View style={{ backgroundColor: 'white', alignItems: 'center', borderRadius: 50, height: '25%', marginLeft: 40, marginRight: 40, marginBottom: 10, marginTop: 10, elevation: 10, justifyContent: 'center' }}>
-        {/* <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
-      <Image source={require('../assets/icons/logo.png')} style={{ width: '200%', height: '200%'}}/>
-        </View>    */}
-        <View style={{ width: '30%', backgroundColor: 'grey', height: '20%', justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ color: 'firebrick' }} onPress={() => navigation.navigate(PATH_HOME.viewworkshop)}>View</Text>
-        </View>
-      </View>
-
-      <View style={{ backgroundColor: 'white', alignItems: 'center', borderRadius: 50, height: '25%', marginLeft: 40, marginRight: 40, marginBottom: 10, elevation: 10, justifyContent: 'center' }}>
-        <View style={{ width: '30%', backgroundColor: 'grey', height: '20%', justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ color: 'firebrick' }}>View</Text>
-        </View>
-      </View>
-      <View style={{ backgroundColor: 'white', alignItems: 'center', borderRadius: 50, height: '25%', marginLeft: 40, marginRight: 40, elevation: 10, justifyContent: 'center' }}>
-        <View style={{ width: '30%', backgroundColor: 'grey', height: '20%', justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ color: 'firebrick' }}>View</Text>
-        </View>
-      </View>
+      {workshop.length > 0 ?
+        workshop.map((item) => {
+          return (
+                <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 50, height: '18%', marginLeft: 40, marginRight: 40, marginBottom: 10, marginTop: 10, elevation: 10, justifyContent: 'center' }}>
+                  <View style={{ width: '50%', backgroundColor: 'white', height: '20%', justifyContent: 'center', alignItems: 'center', borderRadius: 30, elevation: 10, }}>
+                    <Text style={{ color: 'black' }} onPress={() => navigation.navigate(PATH_HOME.viewworkshop)}>{item.name}</Text>
+                  </View>
+                </View>
+          )
+        }) : null}
     </>
   );
 }
