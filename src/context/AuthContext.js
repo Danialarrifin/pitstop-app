@@ -8,7 +8,7 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ navigation, children}) => {
   const [userInfo, setUserInfo] = useState({});
 
-  const register = ({ name, email, password, address, state, postcode, city }) => {
+  const register = ({ name, email, password, }) => {
 
 
     axios
@@ -16,10 +16,6 @@ export const AuthProvider = ({ navigation, children}) => {
         name,
         email,
         password,
-        address,
-        state,
-        postcode,
-        city
       })
       .then(res => {
         let userInfo = res.data;
@@ -57,6 +53,9 @@ export const AuthProvider = ({ navigation, children}) => {
   };
 
   const logout = () => {
+   
+   AsyncStorage.removeItem('userInfo')
+   setUserInfo({})
     axios
       .get(
         `${BASE_URL}/auth/logout`,
