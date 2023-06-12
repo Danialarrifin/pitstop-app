@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { PATH_AUTH, PATH_HOME } from './path';
 import {AuthContext} from '../context/AuthContext';
+import { navigationRef } from './RootNavigation';
 import LandingScreen from '../screen/Landing'
 import LoginScreen from '../screen/Login';
 import RegisterScreen from '../screen/Register';
@@ -53,7 +54,7 @@ const navigation = () => {
     const {userInfo} = useContext(AuthContext);
     console.log(userInfo)
     return (
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
             <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName={PATH_AUTH.landing}>
            
                 {userInfo.access_token ?
