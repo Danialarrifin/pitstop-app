@@ -1,14 +1,18 @@
+import React, {useContext} from 'react';
+import {AuthContext} from '../context/AuthContext';
 import { Button, View, Text, TextInput, Image } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
 
 
+
 function MyWorkshop({ navigation }) {
+    const {logout} = useContext(AuthContext);
     return (
         <>
             <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%', marginBottom: 10 }} >
                 <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                    <AntDesgin name='logout' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={() => navigation.navigate(PATH_AUTH.workshopregister)} />
+                    <AntDesgin name='logout' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={logout} />
                     <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 120, color: 'white' }}> My Workshop</Text>
                 </View>
             </View>
