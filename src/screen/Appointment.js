@@ -6,22 +6,12 @@ function Appointment({ navigation }) {
     <>
      <View style={{ backgroundColor: 'firebrick',  borderBottomEndRadius: 4, height: '10%' }} >
                 <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                    <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={() => navigation.navigate(PATH_HOME.dashboard)}/>
+                    <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 ,}} onPress={() => navigation.navigate(PATH_HOME.dashboard)}/>
                     <Text style={{marginTop: 18, fontSize: 15, marginLeft: 100, color: 'white'}}> Book an Appointment</Text>
                 </View>
             </View>
-      <View style={{ alignItems: 'center', justifyContent: 'center', height: '10%', }}>
-        <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-          <TextInput style={{ height: 40, width: '70%', borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4, }}></TextInput>
-        </View>
-      </View>
-      <View style={{ backgroundColor: 'firebrick', alignItems: 'center', justifyContent: 'center', borderBottomEndRadius: 4, height: '20%' }} >
-        <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-          <Text style={{ marginTop: 30, color: 'white', fontSize: 30, fontFamily: 'Roboto-Bold' }} onPress={() => navigation.navigate(PATH_HOME.vehicle)}>IMAGE</Text>
-        </View>
-      </View>
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }} onPress={() => navigation.navigate(PATH_HOME.viewworkshop)}>Pohleh Auto Workshop Sdn Bhd</Text>
+      <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 50 }}>
+        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light',  }} onPress={() => navigation.navigate(PATH_HOME.viewworkshop)}>Pohleh Auto Workshop Sdn Bhd</Text>
       </View>
       <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
         <Text>
@@ -32,8 +22,8 @@ function Appointment({ navigation }) {
         </Text>
         <Text>(4/5)</Text>
       </View>
-      <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-        {/* <View style={{ backgroundColor: "white", flex: 1, height: 80, marginHorizontal: 5, borderRadius: 4, elevation: 20 }}>
+      <View style={{ flexDirection: 'row', marginVertical: 5, marginBottom: 30 }}>
+        <View style={{ backgroundColor: "white", flex: 1, height: 80, marginHorizontal: 5, borderRadius: 4, elevation: 20 }}>
           <View style={{ flexDirection: 'row', marginVertical: 5, }}>
             <Text style={{ color: 'black' }}>The Service is top tier! Reccomended!</Text>
           </View>
@@ -51,8 +41,8 @@ function Appointment({ navigation }) {
               <Text>Mirza</Text>
             </View>
           </View>
-        </View> */}
-        {/* <View style={{ backgroundColor: "white", flex: 1, height: 80, marginHorizontal: 5, borderRadius: 4, elevation: 20 }}>
+        </View>
+        <View style={{ backgroundColor: "white", flex: 1, height: 80, marginHorizontal: 5, borderRadius: 4, elevation: 20 }}>
           <View style={{ flexDirection: 'row', marginVertical: 5, }}>
             <Text style={{ color: 'black' }}>Highly Reccomended! Good service and workmanship.</Text>
           </View>
@@ -70,7 +60,7 @@ function Appointment({ navigation }) {
               <Text>Mirza</Text>
             </View>
           </View>
-        </View> */}
+        </View>
       </View>
       <View style={{ marginTop: 15, marginLeft: 5, marginRight: 5, backgroundColor: 'firebrick', borderRadius: 50, height: '35%', elevation: 10, }}>
         <View style={{ flexDirection: 'row', marginVertical: 5 }}>
