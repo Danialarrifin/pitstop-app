@@ -1,9 +1,35 @@
 import { Button, View, Text, TextInput, Image } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
+import React, { useContext, useState,useEffect } from 'react';
+import axiosInstance from '../utils/axios';
+import { AuthContext } from '../context/AuthContext';
 
+function ViewWorkshop({ navigation, route }) {
+    const [workshop, setWorkshop] = useState([]);
+const { userInfo } = useContext(AuthContext);
 
-function ViewWorkshop({ navigation }) {
+  useEffect(() => {
+    getWorkshop();
+  }, []);
+
+  const getWorkshop = async () => {
+    try {
+      const response = await axiosInstance.get(
+        `/workshops?workshopId=${route.params.workshopId ? route.params.workshopId : ''}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${userInfo?.access_token}`
+          }
+        }
+      );
+      console.log('response workshop', response.data);
+      if (response.data.length > 0)
+        setWorkshop(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
     return (
         <>
          <View style={{ backgroundColor: 'firebrick',  borderBottomEndRadius: 4, height: '10%', marginBottom: 10 }} >
