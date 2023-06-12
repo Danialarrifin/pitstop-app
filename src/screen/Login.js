@@ -10,12 +10,6 @@ function Login({ navigation }) {
 
     const handleLogin = async () => {
         let res = await login(email, password);
-
-        console.log('res', res, userInfo)
-
-        if(res && userInfo.role === 'admin')
-            navigation.navigate(PATH_HOME.myworkshop);
-
     }
     return (
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', }}>
