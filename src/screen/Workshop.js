@@ -71,7 +71,7 @@ function Workshop({ navigation }) {
         data={workshop}
         renderItem={({ item }) => (
           <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 50, paddingVertical: 30, marginHorizontal: 40, marginVertical: 10, elevation: 10, justifyContent: 'center', width: '80%' }}>
-            <Text style={{ color: 'black' }} onPress={() => navigation.navigate(PATH_HOME.viewworkshop, { workshopId: item?.id })}>{item.name}</Text>
+            <Text style={{ color: 'white' }} onPress={() => navigation.navigate(PATH_HOME.viewworkshop, { workshopId: item?.id })}>{item.name}</Text>
           </View>
         )}
         keyExtractor={item => item.id}

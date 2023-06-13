@@ -1,9 +1,10 @@
 import { Button, View, Text, TextInput, Image } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
-import React, { useContext, useState,useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import axiosInstance from '../utils/axios';
 import { AuthContext } from '../context/AuthContext';
+
 
 function ViewWorkshop({ navigation, route }) {
     const [workshop, setWorkshop] = useState([]);
@@ -38,11 +39,11 @@ const { userInfo } = useContext(AuthContext);
                     <Text style={{marginTop: 18, fontSize: 15, marginLeft: 120, color: 'white'}}> View Workshop</Text>
                 </View>
             </View>
-            <View style={{ backgroundColor: 'firebrick', alignItems: 'center', justifyContent: 'center', borderBottomEndRadius: 4, height: '25%' }} >
+            {/* <View style={{ backgroundColor: 'firebrick', alignItems: 'center', justifyContent: 'center', borderBottomEndRadius: 4, height: '25%' }} >
                 <View style={{ flexDirection: 'row', marginVertical: 5 }}>
                     <Text style={{ marginTop: 30, color: 'white', fontSize: 30, fontFamily: 'Roboto-Bold' }} onPress={() => navigation.navigate(PATH_HOME.vehicle)}>IMAGE</Text>
                 </View>
-            </View>
+            </View> */}
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }}>Pohleh Auto Workshop Sdn Bhd</Text>
             </View>
@@ -108,12 +109,21 @@ const { userInfo } = useContext(AuthContext);
                     <Text style={{ color: 'black' }}>2, Jalan Utama 2/11, Seksyen 2, Taman Perindustrian Puchong Utama, 47100 Puchong, Selangor</Text>
                 </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'center', marginTop: 10 }}>
-                <View style={{ width: '80%', height: '60%', }}>
+            <View style={{ flex: 1, alignItems: 'center', marginTop: 30 }}>
+                <View style={{ width: '80%', height: '60%'  }}>
                     <Button
                         color={'#b22222'}
                         title="Services"
                         onPress={() => navigation.navigate(PATH_HOME.items)}
+                    />
+                </View>
+            </View>
+            <View style={{ flex: 1, alignItems: 'center', marginBottom: 90 }}>
+                <View style={{ width: '80%', height: '60%'}}>
+                    <Button
+                        color={'#b22222'}
+                        title="Book An Appointment"
+                        onPress={() => navigation.navigate(PATH_HOME.appointment)}
                     />
                 </View>
             </View>
