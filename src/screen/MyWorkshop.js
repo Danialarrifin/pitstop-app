@@ -16,11 +16,11 @@ function MyWorkshop({ navigation }) {
                     <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 120, color: 'white' }}> My Workshop</Text>
                 </View>
             </View>
-            <View style={{ backgroundColor: 'firebrick', alignItems: 'center', justifyContent: 'center', borderBottomEndRadius: 4, height: '25%' }} >
+            {/* <View style={{ backgroundColor: 'firebrick', alignItems: 'center', justifyContent: 'center', borderBottomEndRadius: 4, height: '25%' }} >
                 <View style={{ flexDirection: 'row', marginVertical: 5 }}>
                     <Text style={{ marginTop: 30, color: 'white', fontSize: 30, fontFamily: 'Roboto-Bold' }} onPress={() => navigation.navigate(PATH_HOME.vehicle)}>IMAGE</Text>
                 </View>
-            </View>
+            </View> */}
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }}>Pohleh Auto Workshop Sdn Bhd</Text>
             </View>
@@ -73,6 +73,14 @@ function MyWorkshop({ navigation }) {
                     </View>
                 </View>
             </View>
+            <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10}}>
+                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Roboto-Light' }}>Address</Text>
+            </View>
+            <View style={{ backgroundColor: "white", height: 70, marginHorizontal: 5, borderRadius: 4, elevation: 20, }}>
+                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
+                    <Text style={{ color: 'black' }}>2, Jalan Utama 2/11, Seksyen 2, Taman Perindustrian Puchong Utama, 47100 Puchong, Selangor</Text>
+                </View>
+            </View>
             <View style={{ backgroundColor: "white", height: 100, marginHorizontal: 5, borderRadius: 4, elevation: 20, marginTop: 15 }}>
                 <View style={{ flexDirection: 'row', marginVertical: 5, }}>
                     <Text style={{ color: 'black' }}>Workshop  Accident Repairs & Claim, Aircon Service, Battery Service, Body Repair, Car Polish, Car Wash & Wax, Engine Service, Exhaust Specialist, Maintenance, Mechanical Service, Paint Protection, Seat & Cushion Repair, Spray Painting, Tyre & Rims Service, Welding Service, Window Installation</Text>
@@ -86,7 +94,7 @@ function MyWorkshop({ navigation }) {
                     <Text style={{ color: 'black' }}>2, Jalan Utama 2/11, Seksyen 2, Taman Perindustrian Puchong Utama, 47100 Puchong, Selangor</Text>
                 </View>
             </View> */}
-            <View style={{ flex: 1, alignItems: 'center', marginTop: 10 }}>
+            {/* <View style={{ flex: 1, alignItems: 'center', marginTop: 10 }}>
                 <View style={{ width: '80%', height: '60%', }}>
                     <Button
                         color={'#b22222'}
@@ -100,13 +108,24 @@ function MyWorkshop({ navigation }) {
                         onPress={() => navigation.navigate(PATH_HOME.viewvehicle)}
                     />
                 </View>
-                {/* <View style={{ width: '80%', height: '60%', }}>
+            </View> */}
+               <View style={{ flex: 1, alignItems: 'center', marginTop: 30 }}>
+                <View style={{ width: '80%', height: '60%'  }}>
                     <Button
                         color={'#b22222'}
-                        title="View Feedback"
+                        title="View Appointments"
+                        onPress={() => navigation.navigate(PATH_HOME.viewappointment)}
+                    />
+                </View>
+            </View>
+            <View style={{ flex: 1, alignItems: 'center', marginBottom: 90 }}>
+                <View style={{ width: '80%', height: '60%'}}>
+                    <Button
+                        color={'#b22222'}
+                        title="View Vehicle"
                         onPress={() => navigation.navigate(PATH_HOME.viewvehicle)}
                     />
-                </View> */}
+                </View>
             </View>
         </>
     );
