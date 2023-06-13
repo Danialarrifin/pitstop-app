@@ -1,16 +1,19 @@
 import { Button, View, Text } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign';
 import axiosInstance from '../utils/axios';
+import { AuthContext } from '../context/AuthContext';
 
 
 function ViewVehicle({ navigation }) {
   const [vehicle, setVehicle] = useState([]);
+const { userInfo } = useContext(AuthContext);
+
 
   useEffect(() => {
     getAllVehicle();
-  });
+  }, []);
 
   const getAllVehicle = async () => {
     try {
