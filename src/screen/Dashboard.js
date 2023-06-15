@@ -29,8 +29,9 @@ function Dashboard({ navigation }) {
           <Text style={{ marginTop: 37, color: 'white',marginEnd: 5 }}><AntDesgin name='pluscircle' style={{ color: 'white', fontSize: 30 }} onPress={() => navigation.navigate(PATH_HOME.addvehicle)}/></Text>
           <Text style={{ marginTop: 30, color: 'white', fontSize: 30, fontFamily:'Roboto-Bold', marginLeft:10 }} onPress={() => navigation.navigate(PATH_HOME.vehicle)}>My Vehicle</Text>
         </View>
+        <Text style={{ color: 'firebrick', marginRight: 5 }}><AntDesgin name='car' style={{ color: 'white', fontSize: 100 }} /></Text>
       </View>
-
+      
       <View
         style={{
           flex: 1,
