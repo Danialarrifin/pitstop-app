@@ -44,8 +44,8 @@ function Items({ navigation }) {
         showsVerticalScrollIndicator
         data={service}
         renderItem={({ item }) => (
-          <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 50, paddingVertical: 30, marginHorizontal: 40, marginVertical: 10, elevation: 10, justifyContent: 'center', width: '80%' }}>
-            <Text style={{ color: 'white' }}>{item.name}</Text>
+          <View style={{ backgroundColor: 'white', alignItems: 'center', borderRadius: 50, paddingVertical: 30, marginHorizontal: 40, marginVertical: 10, elevation: 10, justifyContent: 'center', width: '80%' }}>
+            <Text style={{ color: 'firebrick' }}>{item.name}</Text>
           </View>
         )}
         keyExtractor={item => item.id}
