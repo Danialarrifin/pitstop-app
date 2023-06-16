@@ -25,7 +25,7 @@ function ViewWorkshop({ navigation, route }) {
                 }
             );
             console.log('response workshop', response.data);
-            if (response.data.length > 0)
+            if (response.data)
                 setWorkshop(response.data);
         } catch (err) {
             console.log(err);
@@ -42,7 +42,13 @@ function ViewWorkshop({ navigation, route }) {
         
                  
                             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }}>Pohleh Sdn Bhd</Text>
+                                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{workshop?.name}</Text>
+                            </View>
+                            <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+                                <Text>
+                                    <AntDesgin name='phone' style={{ color: 'black', fontSize: 30 }} />
+                                </Text>
+                                <Text  style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{workshop.contact_num}</Text>
                             </View>
                             <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
                                 <Text>
@@ -103,7 +109,10 @@ function ViewWorkshop({ navigation, route }) {
                             </View>
                             <View style={{ backgroundColor: "white", height: 70, marginHorizontal: 5, borderRadius: 4, elevation: 20, }}>
                                 <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                                    <Text style={{ color: 'black' }}>2, Jalan Utama 2/11, Seksyen 2, Taman Perindustrian Puchong Utama, 47100 Puchong, Selangor</Text>
+                                    <Text style={{ color: 'black' }}>{workshop?.address_id?.address},</Text>
+                                    <Text style={{ color: 'black' , marginLeft: 5 }}>{workshop?.address_id?.city},</Text>
+                                    <Text style={{ color: 'black' , marginLeft: 5 }}>{workshop?.address_id?.postcode},</Text>
+                                    <Text style={{ color: 'black', marginLeft: 5 }}>{workshop?.address_id?.state}</Text>
                                 </View>
                             </View>
             
@@ -117,7 +126,7 @@ function ViewWorkshop({ navigation, route }) {
                     />
                 </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'center', marginBottom: 90 }}>
+            <View style={{ flex: 1, alignItems: 'center', marginBottom: 70 }}>
                 <View style={{ width: '80%', height: '60%' }}>
                     <Button
                         color={'#b22222'}
