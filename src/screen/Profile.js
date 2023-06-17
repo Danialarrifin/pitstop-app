@@ -1,7 +1,35 @@
 import { Button, View, Text } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
-function Profile({ navigation }) {
+import React, { useContext, useState, useEffect } from 'react';
+import axiosInstance from '../utils/axios';
+import { AuthContext } from '../context/AuthContext';
+
+function Profile({ navigation, route}) {
+  const [profile, setProfile] = useState([]);
+  const { userInfo } = useContext(AuthContext);
+
+  useEffect(() => {
+      getProfile();
+  }, []);
+
+  const getProfile = async () => {
+      try {
+          const response = await axiosInstance.get(
+              "/auth?getProfile",
+              {
+                  headers: {
+                      'Authorization': `Bearer ${userInfo?.access_token}`
+                  }
+              }
+          );
+          console.log('response profile', response.data);
+          if (response.data)
+              setProfile(response.data);
+      } catch (err) {
+          console.log(err);
+      }
+  }
   return (
     <>
      <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }} >
@@ -18,7 +46,7 @@ function Profile({ navigation }) {
       <View style={{ justifyContent: 'flex-start', margin: 20 }}>
         <View style={{ flexDirection: 'row', marginVertical: 5, }}>
           <Text style={{ color: 'white', marginRight: 80 }}><AntDesgin name='user' style={{ color: 'firebrick', fontSize:30 }} /></Text>
-          <Text style={{ color: 'firebrick', fontSize:20 }}>Muhamad Mirza</Text>
+          <Text style={{ color: 'firebrick', fontSize:20 }}>{profile?.name}</Text>
         </View>
       </View>
       <View style={{ borderBottomColor: '#ccc', borderBottomWidth: 1, marginVertical: 10, width: '100%' }} />

@@ -1,12 +1,37 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import axiosInstance from '../utils/axios';
 import { Button, View, Text, TextInput, Image } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
 
 
 
-function MyWorkshop({ navigation }) {
+function MyWorkshop({ navigation, route }) {
+    const [workshop, setWorkshop] = useState([]);
+    const { userInfo } = useContext(AuthContext);
+
+    useEffect(() => {
+        getWorkshop();
+    }, []);
+
+    const getWorkshop = async () => {
+        try {
+            const response = await axiosInstance.get(
+                `/workshops?workshopId=${route.params.workshopId ? route.params.workshopId : ''}`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${userInfo?.access_token}`
+                    }
+                }
+            );
+            console.log('response workshop', response.data);
+            if (response.data)
+                setWorkshop(response.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
     const { logout } = useContext(AuthContext);
     return (
         <>
@@ -22,7 +47,7 @@ function MyWorkshop({ navigation }) {
                 </View>
             </View> */}
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }}>Pohleh Auto Workshop Sdn Bhd</Text>
+                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }}>{workshop?.name}</Text>
                 <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }}>013232911</Text>
             </View>
             <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
@@ -133,7 +158,7 @@ function MyWorkshop({ navigation }) {
                     <Text>What are pitstop speciality?</Text>
                 </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'center', marginTop: 40,  justifyContent: 'center' }}>
+            <View style={{ flex: 1, alignItems: 'center', marginTop: 40, justifyContent: 'center' }}>
                 <View style={{ width: '80%', height: '60%' }}>
                     <Button
                         color={'#b22222'}
