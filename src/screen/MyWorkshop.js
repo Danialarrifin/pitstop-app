@@ -10,27 +10,27 @@ import AntDesgin from 'react-native-vector-icons/AntDesign'
 function MyWorkshop({ navigation, route }) {
     const [workshop, setWorkshop] = useState([]);
     const { userInfo } = useContext(AuthContext);
-
+  
     useEffect(() => {
-        getWorkshop();
+      getWorkshop();
     }, []);
-
+  
     const getWorkshop = async () => {
-        try {
-            const response = await axiosInstance.get(
-                `/workshops?workshopId=${route.params.workshopId ? route.params.workshopId : ''}`,
-                {
-                    headers: {
-                        'Authorization': `Bearer ${userInfo?.access_token}`
-                    }
-                }
-            );
-            console.log('response workshop', response.data);
-            if (response.data)
-                setWorkshop(response.data);
-        } catch (err) {
-            console.log(err);
-        }
+      try {
+        const response = await axiosInstance.get(
+          `/workshops?workshopId`,
+          {
+            headers: {
+              'Authorization': `Bearer ${userInfo?.access_token}`
+            }
+          }
+        );
+        console.log('response workshop', response.data);
+        if (response.data)
+          setWorkshop(response.data);
+      } catch (err) {
+        console.log(err);
+      }
     }
     const { logout } = useContext(AuthContext);
     return (
