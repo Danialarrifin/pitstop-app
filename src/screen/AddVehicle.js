@@ -1,9 +1,41 @@
 import { Button, View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
+import axiosInstance from '../utils/axios';
+import { AuthContext } from '../context/AuthContext';
+import React, { useContext, useState, useEffect } from 'react';
+
 
 
 function AddVehicle({ navigation }) {
+    // const [userInfo, setUserInfo] = useState({});
+    // const [manufacturer, setManufacturer] = useState({});
+    // const [model, setModel] = useState({});
+    // const [plateNum, setPlateNum] = useState({});
+
+    // useEffect(() => {
+    //     getAllVehicle();
+    //   }, []);
+    //   const AddVehicle = async (id, data) => {
+    //     try {
+    //       const response = await axiosInstance.post(
+    //         `/vehicles`,
+    //         data,
+    //         {
+    //           headers: {
+    //             'Authorization': `Bearer ${localStorage.getItem('token')}`
+    //           },
+    //         },
+    //       );
+    //       console.log('response vehicle', response.data);
+    
+    //       await getAllVehicle();
+    //     } catch (err) {
+    //       console.log(err);
+    
+    //     }
+    //   }
+
     return (
         <>
          <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }} >
@@ -27,7 +59,7 @@ function AddVehicle({ navigation }) {
                 <Button
                     color={'#b22222'}
                     title="Add Vehicle"
-                    onPress={() => navigation.navigate(PATH_HOME.dashboard)}
+                    onPress={() => navigation.navigate(PATH_HOME.vehicle)}
                 />
             </View>
         </View>
