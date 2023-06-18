@@ -48,7 +48,7 @@ function MyWorkshop({ navigation, route }) {
             </View> */}
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }}>{workshop?.name}</Text>
-                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }}>013232911</Text>
+                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }}>{workshop?.contact_num}</Text>
             </View>
             <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
                 <Text>
