@@ -16,6 +16,7 @@ function ViewWorkshop({ navigation, route }) {
 
     const getWorkshop = async () => {
         try {
+            console.log(route.params)
             const response = await axiosInstance.get(
                 `/workshops?workshopId=${route.params.workshopId ? route.params.workshopId : ''}`,
                 {
