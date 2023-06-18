@@ -1,11 +1,13 @@
 import { Button, View, Text, TextInput, Image, Picker } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect} from "react";
+import { AuthContext } from '../context/AuthContext';
+import axiosInstance from '../utils/axios';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Calendar } from 'react-native-calendars';
 
-function Appointment({ navigation }) {
+function Appointment({ navigation, route }) {
   const [showModal, setShowModal] = useState(false);
   const [timeSlotOpen, setTimeSlotOpen] = useState(false);
   const [timeSlotValue, setTimeSlotValue] = useState(null);
@@ -28,17 +30,42 @@ function Appointment({ navigation }) {
     { label: 'Battery Change', value: 'Battery Change' }
   ]);
 
+  const [workshop, setWorkshop] = useState([]);
+  const { userInfo } = useContext(AuthContext);
+
+  useEffect(() => {
+      getWorkshop();
+  }, []);
+
+  const getWorkshop = async () => {
+      try {
+        console.log(route)
+          const response = await axiosInstance.get(
+            `/workshops?workshopId=${route.params.workshopId ? route.params.workshopId : ''}`,
+              {
+                  headers: {
+                      'Authorization': `Bearer ${userInfo?.access_token}`
+                  }
+              }
+          );
+          console.log('response workshop', response.data);
+          if (response.data)
+              setWorkshop(response.data);
+      } catch (err) {
+          console.log(err);
+      }
+  }
 
   return (
     <>
       <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }} >
         <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-          <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10, }} onPress={() => navigation.navigate(PATH_HOME.viewvehicle)} />
+          <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10, }} onPress={() => navigation.navigate(PATH_HOME.viewworkshop)} />
           <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 100, color: 'white' }}> Book an Appointment</Text>
         </View>
       </View>
       <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 50 }}>
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light', }} onPress={() => navigation.navigate(PATH_HOME.viewworkshop)}>Pohleh Auto Workshop Sdn Bhd</Text>
+        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light', }}>Pohleh sdn bhd</Text>
       </View>
       <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
         <Text>
