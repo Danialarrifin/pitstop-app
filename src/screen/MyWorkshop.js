@@ -18,7 +18,7 @@ function MyWorkshop({ navigation, route }) {
     const getWorkshop = async () => {
       try {
         const response = await axiosInstance.get(
-          `/workshops?workshopId`,
+            `/workshops?workshopId=41`,
           {
             headers: {
               'Authorization': `Bearer ${userInfo?.access_token}`
