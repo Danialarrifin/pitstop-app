@@ -1,10 +1,38 @@
 import { Button, View, Text } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
+import React, { useContext, useState, useEffect } from 'react';
+import { AuthContext } from '../context/AuthContext';
+import axiosInstance from '../utils/axios';
 
 
+function MyAppointment({ navigation, route }) {
 
-function MyAppointment({ navigation }) {
+    const [appointment, setAppointment] = useState([]);
+    const { userInfo } = useContext(AuthContext);
+
+    useEffect(() => {
+        getAppointment();
+    }, []);
+
+    const getAppointment = async () => {
+        try {
+           
+            const response = await axiosInstance.get(
+                `/appointments?userId=${userInfo.user.id}`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${userInfo?.access_token}`
+                    }
+                }
+            );
+            console.log('response appointments', response.data);
+            if (response.data)
+                setAppointment(response.data[0]);
+        } catch (err) {
+            console.log(err);
+        }
+    }
     return (
         <>
         <View style={{ backgroundColor: 'firebrick',  borderBottomEndRadius: 4, height: '10%' }} >
@@ -17,7 +45,7 @@ function MyAppointment({ navigation }) {
                 <Text style={{ fontSize: 20, marginBottom: 10, color: 'firebrick', fontFamily: 'Roboto-Bold' }}  onPress={() => navigation.navigate(PATH_HOME.dashboard)}> My Appointments</Text>
             </View>
             <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 30, height: '30%', marginLeft: 30, marginBottom: 10, elevation: 10, justifyContent: 'center', width: '85%' }}>
-                <Text style={{ fontSize: 20, marginBottom: 5, color: 'white' }}>Pohleh Workshop Sdn Bhd</Text>
+                <Text style={{ fontSize: 20, marginBottom: 5, color: 'white' }}>{appointment?.workshop_name}</Text>
                 <View style={{ flexDirection: 'row', marginVertical: 5 }}>
                     <AntDesgin name='calendar' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
                     <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>29/11/2022</Text>
@@ -33,26 +61,6 @@ function MyAppointment({ navigation }) {
                 <View style={{ flexDirection: 'row', marginVertical: 5, }}>
                     <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>Status:</Text>
                     <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20, fontFamily: 'Roboto-Bold' }}>Accepted</Text>
-                </View>
-            </View>
-
-            <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 30, height: '30%', marginLeft: 30, marginBottom: 10, elevation: 10, justifyContent: 'center', width: '85%' }}>
-                <Text style={{ fontSize: 20, marginBottom: 5, color: 'white' }}>Serv Malaysia</Text>
-                <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                    <AntDesgin name='calendar' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>4/11/2022</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <AntDesgin name='clockcircleo' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>11.00 am - 12.30 pm</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <AntDesgin name='car' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>Engine Overhaul</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>Status:</Text>
-                    <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20, fontFamily: 'Roboto-BoldItalic' }}>Completed</Text>
                 </View>
             </View>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
