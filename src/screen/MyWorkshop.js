@@ -18,8 +18,8 @@ function MyWorkshop({ navigation, route }) {
     const getWorkshop = async () => {
       try {
         const response = await axiosInstance.get(
-            `/workshops?workshopId=41`,
-          {
+            `/workshops?workshopId=${userInfo?.workshop?.id}`,
+            {
             headers: {
               'Authorization': `Bearer ${userInfo?.access_token}`
             }
@@ -104,7 +104,7 @@ function MyWorkshop({ navigation, route }) {
             </View>
             <View style={{ backgroundColor: "white", height: 70, marginHorizontal: 5, borderRadius: 4, elevation: 20, }}>
                 <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <Text style={{ color: 'black' }}>2, Jalan Utama 2/11, Seksyen 2, Taman Perindustrian Puchong Utama, 47100 Puchong, Selangor</Text>
+                    <Text style={{ color: 'black' }}>{workshop?.address_id?.address}</Text>
                 </View>
             </View>
             <View style={{ backgroundColor: "white", height: 100, marginHorizontal: 5, borderRadius: 4, elevation: 20, marginTop: 15 }}>
