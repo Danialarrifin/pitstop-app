@@ -14,13 +14,13 @@ function Vehicle({ navigation }) {
     const { userInfo } = useContext(AuthContext);
 
     useEffect(() => {
-        getAllVehicle();
+        getVehicle();
     }, []);
 
-    const getAllVehicle = async () => {
+    const getVehicle = async () => {
         try {
             const response = await axiosInstance.get(
-                "/vehicles",
+                `/vehicles?userId=${userInfo.user.id}`,
                 {
                     headers: {
                         'Authorization': `Bearer ${userInfo?.access_token}`
