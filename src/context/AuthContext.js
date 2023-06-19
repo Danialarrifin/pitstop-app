@@ -107,6 +107,12 @@ export const AuthProvider = ({ navigation, children }) => {
 
       if (userInfo) {
         setUserInfo(userInfo);
+        if(userInfo.role === 'workshop')
+          RootNavigation.navigate('myworkshop');
+        else
+          RootNavigation.navigate('dashboard');
+
+        return userInfo;
       }
 
 
