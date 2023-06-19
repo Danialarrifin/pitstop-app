@@ -1,63 +1,209 @@
-import { Button, View, Text, TextInput, Image, Picker } from 'react-native';
+import { Button, View, Text, TextInput, Image, Picker, Modal, Pressable, StyleSheet, TouchableOpacity } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
-import React, { useState, useContext, useEffect} from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from '../context/AuthContext';
 import axiosInstance from '../utils/axios';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Calendar } from 'react-native-calendars';
 
 function Appointment({ navigation, route }) {
+  const [selectedDate, setSelectedDate] = useState('2023-06-19');
+  const [datePickerVisible, setDatePickerVisible] = useState(false);
+
+  const showDatePicker = () => {
+    setDatePickerVisible(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisible(false);
+  };
+
+  const handleConfirm = (date) => {
+    setSelectedDate(date);
+    hideDatePicker();
+  };
+
+
   const [showModal, setShowModal] = useState(false);
   const [timeSlotOpen, setTimeSlotOpen] = useState(false);
   const [timeSlotValue, setTimeSlotValue] = useState(null);
   const [timeSlot, setTimeSlot] = useState([
-    { label: '1130-1230', value: '11.30-12.30' },
-    { label: '1230-130', value: '11.30-1230' }
+  
   ]);
 
   const [vehicleOpen, setVehicleOpen] = useState(false);
   const [vehicleValue, setVehicleValue] = useState(null);
   const [vehicle, setVehicle] = useState([
-    { label: 'Suzuki Swift', value: 'Suzuki Swift' },
-    { label: 'BMW X5', value: 'BMW X5' }
   ]);
 
   const [serviceOpen, setServiceOpen] = useState(false);
   const [serviceValue, setServiceValue] = useState(null);
   const [service, setService] = useState([
-    { label: 'Flat Tyre', value: 'flat tyre' },
-    { label: 'Battery Change', value: 'Battery Change' }
+
   ]);
 
   const [workshop, setWorkshop] = useState([]);
   const { userInfo } = useContext(AuthContext);
 
   useEffect(() => {
-      getWorkshop();
+    if (route.params.workshop) {
+      console.log(route.params.workshop)
+      setWorkshop(route.params.workshop);
+    }
+  }, [route]);
+
+  const [vehicleList, setVehicleList] = useState([]);
+
+  useEffect(() => {
+    getVehicle();
   }, []);
 
-  const getWorkshop = async () => {
-      try {
-        console.log(route)
-          const response = await axiosInstance.get(
-            `/workshops?workshopId=${route.params.workshopId ? route.params.workshopId : ''}`,
-              {
-                  headers: {
-                      'Authorization': `Bearer ${userInfo?.access_token}`
-                  }
-              }
-          );
-          console.log('response workshop', response.data);
-          if (response.data)
-              setWorkshop(response.data);
-      } catch (err) {
-          console.log(err);
+  const getVehicle = async () => {
+    try {
+      const response = await axiosInstance.get(
+        `/vehicles?userId=${userInfo.user.id}`,
+        {
+          headers: {
+            'Authorization': `Bearer ${userInfo?.access_token}`
+          }
+        }
+      );
+      console.log('response vehicle', response.data);
+      if (response.data.length > 0) {
+        let _vehicleList = [];
+        response.data.forEach(element => {
+          _vehicleList.push({
+            label: element?.model,
+            value: element?.id
+          });
+        });
+        console.log(_vehicleList);
+        setVehicle(_vehicleList);
       }
+    } catch (err) {
+      console.log(err);
+    }
   }
 
+
+  useEffect(() => {
+    getAllTimeSlot();
+  }, []);
+
+  const getAllTimeSlot = async () => {
+    try {
+      const response = await axiosInstance.get(
+        "/time_slots",
+        {
+          headers: {
+            'Authorization': `Bearer ${userInfo?.access_token}`
+          }
+        }
+      );
+      console.log('response time_slots', response.data);
+      if (response.data.length > 0) {
+        let _timeSlotList = [];
+        response.data.forEach(element => {
+          _timeSlotList.push({
+            label: element?.start_time,
+            value: element?.id
+          });
+        });
+        console.log(_timeSlotList);
+        setTimeSlot(_timeSlotList);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    getAllServices();
+  }, []);
+
+  const getAllServices = async () => {
+    try {
+      const response = await axiosInstance.get(
+        "/services",
+        {
+          headers: {
+            'Authorization': `Bearer ${userInfo?.access_token}`
+          }
+        }
+      );
+      console.log('response services', response.data);
+      if (response.data.length > 0) {
+        let _servicesList = [];
+        response.data.forEach(element => {
+          _servicesList.push({
+            label: element?.name,
+            value: element?.id
+          });
+        });
+        console.log(_servicesList);
+        setService(_servicesList);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  const handleAppointment = async () => {
+    let res = await appointment();
+  }
+
+  const appointment = async () => {
+    console.log(selectedDate, timeSlotValue, vehicleValue, serviceValue, userInfo.user.id, workshop.id)
+    axiosInstance
+      .post(`/appointments`, {
+        date: selectedDate,
+        time_slot_id: timeSlotValue,
+        vehicle_id: vehicleValue, 
+        service_id: serviceValue,
+        user_id: userInfo.user.id,
+        workshop_id: workshop.id,
+        status: 'pending'
+
+      }, {
+        headers: {
+          'Authorization': `Bearer ${userInfo?.access_token}`
+        }
+      })
+      .then(res => {
+        console.log(res.data)
+        navigation.goBack()
+      })
+      .catch(e => {
+        console.log(`add appointment error ${e}`);
+        return false;
+      });
+  }
   return (
     <>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={datePickerVisible}
+        onRequestClose={() => {
+          Alert.alert('Modal has been closed.');
+          setDatePickerVisible(!datePickerVisible);
+        }}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Calendar onDayPress={(day) => {
+              console.log('onDayPress', day);
+              setSelectedDate(day?.dateString);
+              setDatePickerVisible(!datePickerVisible)
+            }} />
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => setDatePickerVisible(!datePickerVisible)}>
+              <Text style={styles.textStyle}>Hide Modal</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
       <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }} >
         <View style={{ flexDirection: 'row', marginVertical: 5 }}>
           <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10, }} onPress={() => navigation.navigate(PATH_HOME.viewworkshop)} />
@@ -65,7 +211,7 @@ function Appointment({ navigation, route }) {
         </View>
       </View>
       <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 50 }}>
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light', }}>Pohleh sdn bhd</Text>
+        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light', }}>{workshop?.name}</Text>
       </View>
       <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
         <Text>
@@ -121,28 +267,16 @@ function Appointment({ navigation, route }) {
           <Text style={{ marginLeft: 30, color: 'white' }}>Date</Text>
           <Text style={{ marginLeft: 200, color: 'white' }}>Time</Text>
         </View>
-        <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-          <TextInput style={{ marginLeft: 30, height: 50, width: '30%', borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 10, }}>
+        <View style={{ flexDirection: 'row', marginVertical: 5, zIndex: 99 }}>
+          <TouchableOpacity style={{ marginLeft: 30, height: 50, width: '30%', borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 10, }} onPress={() => setDatePickerVisible(!datePickerVisible)}>
             <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
-              <AntDesgin name='calendar' style={{ color: 'black', fontSize: 15 }}>
-              
-              </AntDesgin>
+              <AntDesgin name='calendar' style={{ color: 'black', fontSize: 15 }} />
+              {selectedDate ? selectedDate : 'No date selected'}
             </Text>
-          </TextInput>
+          </TouchableOpacity>
 
-          {/* <Calendar
-            onDayPress={(day) => console.log('onDayPress', day)}
-            onDayLongPress={(day) => console.log('onDayLongPress', day)}
-            onMonthChange={(date) => console.log('onMonthChange', date)}
-            onPressArrowLeft={(goToPreviousMonth) => {
-              console.log('onPressArrowLeft'); goToPreviousMonth();
-            }}
-            onPressArrowRight={(goToNextMonth) => {
-              console.log('onPressArrowRight'); goToNextMonth();
-            }}
-          /> */}
           <DropDownPicker
-            style={{ width: '35%', marginLeft: 80, }}
+            style={{ width: '35%', marginLeft: 80 }}
             placeholder='Select Time Slots'
             open={timeSlotOpen}
             value={timeSlotValue}
@@ -151,41 +285,43 @@ function Appointment({ navigation, route }) {
             setValue={setTimeSlotValue}
             setItems={setTimeSlot}
             listMode="SCROLLVIEW"
-
           />
         </View>
-        <View>
-          <View style={{ marginLeft: 30 }}>
-            <Text style={{ color: 'white', marginBottom: 5 }}>Vehicles</Text>
-          </View>
-          <DropDownPicker
-            style={{ width: '85%', marginLeft: 26 }}
-            placeholder='Select Your Vehicle '
-            open={vehicleOpen}
-            value={vehicleValue}
-            items={vehicle}
-            setOpen={setVehicleOpen}
-            setValue={setVehicleValue}
-            setItems={setVehicle}
-            listMode="SCROLLVIEW"
+        <View style={{ zIndex: 88 }}>
+          <View style={{ zIndex: 77 }}>
+            <View style={{ marginLeft: 30 }}>
+              <Text style={{ color: 'white', marginBottom: 5 }}>Vehicles</Text>
+            </View>
+            <DropDownPicker
+              style={{ width: '85%', marginLeft: 26, zIndex: 0 }}
+              placeholder='Select Your Vehicle '
+              open={vehicleOpen}
+              value={vehicleValue}
+              items={vehicle}
+              dropDownDirection='TOP'
+              setOpen={setVehicleOpen}
+              setValue={setVehicleValue}
+              setItems={setVehicle}
+              listMode="SCROLLVIEW"
 
-          />
-        </View>
-        <View>
-          <View style={{ marginLeft: 30 }}>
-            <Text style={{ color: 'white', marginBottom: 5 }}>Services</Text>
+            />
           </View>
-          <DropDownPicker
-            style={{ width: '85%', marginLeft: 26 }}
-            placeholder='Select Services '
-            open={serviceOpen}
-            value={serviceValue}
-            items={service}
-            setOpen={setServiceOpen}
-            setValue={setServiceValue}
-            setItems={setService}
-            listMode="SCROLLVIEW"
-          />
+          <View style={{ zIndex: 88 }}>
+            <View style={{ marginLeft: 30 }}>
+              <Text style={{ color: 'white', marginBottom: 5 }}>Services</Text>
+            </View>
+            <DropDownPicker
+              style={{ width: '85%', marginLeft: 26 }}
+              placeholder='Select Services'
+              open={serviceOpen}
+              value={serviceValue}
+              items={service}
+              setOpen={setServiceOpen}
+              setValue={setServiceValue}
+              setItems={setService}
+              listMode="SCROLLVIEW"
+            />
+          </View>
         </View>
       </View>
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -193,12 +329,58 @@ function Appointment({ navigation, route }) {
           <Button
             color={'#b22222'}
             title="Book an Appointment"
-            onPress={() => navigation.navigate(PATH_HOME.appointmentconfirmation)}
+            onPress={() => {
+              handleAppointment()
+            }}
           />
         </View>
       </View>
     </>
   );
 }
+
+const styles = StyleSheet.create({
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: '#F194FF',
+  },
+  buttonClose: {
+    backgroundColor: '#2196F3',
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
+  },
+});
 
 export default Appointment;
