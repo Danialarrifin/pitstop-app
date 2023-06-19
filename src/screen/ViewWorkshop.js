@@ -132,7 +132,7 @@ function ViewWorkshop({ navigation, route }) {
                     <Button
                         color={'#b22222'}
                         title="Book An Appointment"
-                        onPress={() => navigation.navigate(PATH_HOME.appointment)}
+                        onPress={() => navigation.navigate(PATH_HOME.appointment, {workshop})}
                     />
                 </View>
             </View>
