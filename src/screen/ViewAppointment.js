@@ -7,27 +7,27 @@ import { AuthContext } from '../context/AuthContext';
 
 
 function ViewAppointment({ navigation }) {
-const [appointment, setAppointment] = useState([]);
-const { userInfo } = useContext(AuthContext);
+    const [appointment, setAppointment] = useState([]);
+    const { userInfo } = useContext(AuthContext);
 
 
     useEffect(() => {
-        getAllAppointment();
+        getAppointment();
     }, []);
 
-    const getAllAppointment = async () => {
+    const getAppointment = async () => {
         try {
             const response = await axiosInstance.get(
-                "/appointments",
+                `/appointments?workshopId`,
                 {
                     headers: {
-                      'Authorization': `Bearer ${userInfo?.access_token}`
+                        'Authorization': `Bearer ${userInfo?.access_token}`
                     }
-                  }
+                }
             );
             console.log('response appointment', response.data);
             if (response.data.length > 0)
-              setAppointment(response.data);
+                setAppointment(response.data);
         } catch (err) {
             console.log(err);
         }
@@ -97,6 +97,17 @@ const { userInfo } = useContext(AuthContext);
                                 height: '100%',
                                 borderRightWidth: 0,
                             }}>
+                            <Text style={{ color: 'white' }}>Name</Text>
+                        </View>
+                        <View
+                            style={{
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderWidth: 2,
+                                flex: 1,
+                                height: '100%',
+                                borderRightWidth: 0,
+                            }}>
                             <Text style={{ color: 'white' }}>Date</Text>
                         </View>
                         <View
@@ -143,76 +154,89 @@ const { userInfo } = useContext(AuthContext);
                     </View>
 
                     {appointment.length > 0 ?
-                         appointment.map((item) =>
-                         { return (
+                        appointment.map((item) => {
+                            return (
 
-                            <View
-                                style={{
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'center',
-                                    width: '100%',
-                                    height: 40,
-                                }}>
                                 <View
                                     style={{
-                                        justifyContent: 'center',
+                                        flexDirection: 'row',
+                                        justifyContent: 'space-between',
                                         alignItems: 'center',
-                                        borderWidth: 2,
-                                        flex: 1,
-                                        height: '100%',
-                                        borderTopWidth: 0,
-                                        borderRightWidth: 0,
+                                        width: '100%',
+                                        height: 40,
                                     }}>
-                                    <Text>{item.date}</Text>
+                                    <View
+                                        style={{
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            borderWidth: 2,
+                                            flex: 1,
+                                            height: '100%',
+                                            borderTopWidth: 0,
+                                            borderRightWidth: 0,
+                                        }}>
+                                        <Text>{item.user_name}</Text>
+                                    </View>
+                                    <View
+                                        style={{
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            borderWidth: 2,
+                                            flex: 1,
+                                            height: '100%',
+                                            borderTopWidth: 0,
+                                            borderRightWidth: 0,
+                                        }}>
+                                        <Text>{item.date}</Text>
+                                    </View>
+                                    <View
+                                        style={{
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            borderWidth: 2,
+                                            flex: 1,
+                                            height: '100%',
+                                            borderTopWidth: 0,
+                                            borderRightWidth: 0,
+                                        }}>
+                                        <Text>{item.start_time + '-' + item.end_time}</Text>
+                                    </View>
+                                    <View
+                                        style={{
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            borderWidth: 2,
+                                            flex: 1,
+                                            height: '100%',
+                                            borderTopWidth: 0,
+                                        }}>
+                                        <Text>{item.model}</Text>
+                                    </View>
+                                    <View
+                                        style={{
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            borderWidth: 2,
+                                            flex: 1,
+                                            height: '100%',
+                                            borderTopWidth: 0,
+                                        }}>
+                                        <Text>{item.service_name}</Text>
+                                    </View>
+                                    <View
+                                        style={{
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            borderWidth: 2,
+                                            flex: 1,
+                                            height: '100%',
+                                            borderTopWidth: 0,
+                                        }}>
+                                        <Text>{item.status}</Text>
+                                    </View>
                                 </View>
-                                <View
-                                    style={{
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        borderWidth: 2,
-                                        flex: 1,
-                                        height: '100%',
-                                        borderTopWidth: 0,
-                                        borderRightWidth: 0,
-                                    }}>
-                                    <Text>{item.time_slot_id}</Text>
-                                </View>
-                                <View
-                                    style={{
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        borderWidth: 2,
-                                        flex: 1,
-                                        height: '100%',
-                                        borderTopWidth: 0,
-                                    }}>
-                                    <Text>{item.vehicle_id}</Text>
-                                </View>
-                                <View
-                                    style={{
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        borderWidth: 2,
-                                        flex: 1,
-                                        height: '100%',
-                                        borderTopWidth: 0,
-                                    }}>
-                                    <Text>{item.service_id}</Text>
-                                </View>  
-                                <View
-                                    style={{
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        borderWidth: 2,
-                                        flex: 1,
-                                        height: '100%',
-                                        borderTopWidth: 0,
-                                    }}>
-                                    <Text>{item.status}</Text>
-                                </View>
-                            </View>
-                        )}) : null }
+                            )
+                        }) : null}
                 </View>
             </View>
         </>
