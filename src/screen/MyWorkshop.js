@@ -10,27 +10,27 @@ import AntDesgin from 'react-native-vector-icons/AntDesign'
 function MyWorkshop({ navigation, route }) {
     const [workshop, setWorkshop] = useState([]);
     const { userInfo } = useContext(AuthContext);
-  
+
     useEffect(() => {
-      getWorkshop();
+        getWorkshop();
     }, []);
-  
+
     const getWorkshop = async () => {
-      try {
-        const response = await axiosInstance.get(
-            `/workshops?workshopId=${userInfo?.workshop?.id}`,
-            {
-            headers: {
-              'Authorization': `Bearer ${userInfo?.access_token}`
-            }
-          }
-        );
-        console.log('response workshop', response.data);
-        if (response.data)
-          setWorkshop(response.data);
-      } catch (err) {
-        console.log(err);
-      }
+        try {
+            const response = await axiosInstance.get(
+                `/workshops?workshopId=${userInfo?.workshop?.id}`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${userInfo?.access_token}`
+                    }
+                }
+            );
+            console.log('response workshop', response.data);
+            if (response.data)
+                setWorkshop(response.data);
+        } catch (err) {
+            console.log(err);
+        }
     }
     const { logout } = useContext(AuthContext);
     return (
@@ -47,8 +47,8 @@ function MyWorkshop({ navigation, route }) {
                 </View>
             </View> */}
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }}>{workshop?.name}</Text>
-                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light' }}>{workshop?.contact_num}</Text>
+                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{workshop?.name}</Text>
+                <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{workshop?.contact_num}</Text>
             </View>
             <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
                 <Text>
@@ -104,7 +104,10 @@ function MyWorkshop({ navigation, route }) {
             </View>
             <View style={{ backgroundColor: "white", height: 70, marginHorizontal: 5, borderRadius: 4, elevation: 20, }}>
                 <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <Text style={{ color: 'black' }}>{workshop?.address_id?.address}</Text>
+                    <Text style={{ color: 'black' }}>{workshop?.address_id?.address},</Text>
+                    <Text style={{ color: 'black', marginLeft: 5 }}>{workshop?.address_id?.city},</Text>
+                    <Text style={{ color: 'black', marginLeft: 5 }}>{workshop?.address_id?.postcode},</Text>
+                    <Text style={{ color: 'black', marginLeft: 5 }}>{workshop?.address_id?.state}</Text>
                 </View>
             </View>
             <View style={{ backgroundColor: "white", height: 100, marginHorizontal: 5, borderRadius: 4, elevation: 20, marginTop: 15 }}>
@@ -112,29 +115,7 @@ function MyWorkshop({ navigation, route }) {
                     <Text style={{ color: 'black' }}>Workshop  Accident Repairs & Claim, Aircon Service, Battery Service, Body Repair, Car Polish, Car Wash & Wax, Engine Service, Exhaust Specialist, Maintenance, Mechanical Service, Paint Protection, Seat & Cushion Repair, Spray Painting, Tyre & Rims Service, Welding Service, Window Installation</Text>
                 </View>
             </View>
-            {/* <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10}}>
-                <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Roboto-Light' }}>Address</Text>
-            </View>
-            <View style={{ backgroundColor: "white", height: 70, marginHorizontal: 5, borderRadius: 4, elevation: 20, }}>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <Text style={{ color: 'black' }}>2, Jalan Utama 2/11, Seksyen 2, Taman Perindustrian Puchong Utama, 47100 Puchong, Selangor</Text>
-                </View>
-            </View> */}
-            {/* <View style={{ flex: 1, alignItems: 'center', marginTop: 10 }}>
-                <View style={{ width: '80%', height: '60%', }}>
-                    <Button
-                        color={'#b22222'}
-                        title="View Appointments"
-                        onPress={() => navigation.navigate(PATH_HOME.viewappointment)}
-                        style={{marginBottom: 10}}
-                    />
-                    <Button
-                        color={'#b22222'}
-                        title="View Vehicles"
-                        onPress={() => navigation.navigate(PATH_HOME.viewvehicle)}
-                    />
-                </View>
-            </View> */}
+
             <View
                 style={{
                     flex: 1,
