@@ -29,7 +29,7 @@ function Appointment({ navigation, route }) {
   const [timeSlotOpen, setTimeSlotOpen] = useState(false);
   const [timeSlotValue, setTimeSlotValue] = useState(null);
   const [timeSlot, setTimeSlot] = useState([
-  
+
   ]);
 
   const [vehicleOpen, setVehicleOpen] = useState(false);
@@ -159,7 +159,7 @@ function Appointment({ navigation, route }) {
       .post(`/appointments`, {
         date: selectedDate,
         time_slot_id: timeSlotValue,
-        vehicle_id: vehicleValue, 
+        vehicle_id: vehicleValue,
         service_id: serviceValue,
         user_id: userInfo.user.id,
         workshop_id: workshop.id,
@@ -210,10 +210,11 @@ function Appointment({ navigation, route }) {
           <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 100, color: 'white' }}> Book an Appointment</Text>
         </View>
       </View>
-      <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 50 }}>
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Light', }}>{workshop?.name}</Text>
+      <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 20 }}>
+        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold', }}>{workshop?.name}</Text>
+        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{workshop?.contact_num}</Text>
       </View>
-      <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+      {/* <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
         <Text>
           <AntDesgin name='star' style={{ color: 'yellow', fontSize: 30 }} />
           <AntDesgin name='star' style={{ color: 'yellow', fontSize: 30 }} />
@@ -260,6 +261,17 @@ function Appointment({ navigation, route }) {
               <Text>Mirza</Text>
             </View>
           </View>
+        </View>
+      </View> */}
+      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Roboto-Light' }}>Address</Text>
+      </View>
+      <View style={{ backgroundColor: "white", height: 70, marginHorizontal: 5, borderRadius: 4, elevation: 20, }}>
+        <View style={{ flexDirection: 'row', marginVertical: 5, }}>
+          <Text style={{ color: 'black' }}>{workshop?.address_id?.address},</Text>
+          <Text style={{ color: 'black', marginLeft: 5 }}>{workshop?.address_id?.city},</Text>
+          <Text style={{ color: 'black', marginLeft: 5 }}>{workshop?.address_id?.postcode},</Text>
+          <Text style={{ color: 'black', marginLeft: 5 }}>{workshop?.address_id?.state}</Text>
         </View>
       </View>
       <View style={{ marginTop: 15, marginLeft: 5, marginRight: 5, backgroundColor: 'firebrick', borderRadius: 50, height: '40%', elevation: 10, }}>
