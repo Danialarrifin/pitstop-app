@@ -59,7 +59,7 @@ function MyWorkshop({ navigation, route }) {
                 </Text>
                 <Text>(4/5)</Text>
             </View>
-            <View style={{ flexDirection: 'row', marginVertical: 5 }}>
+            {/* <View style={{ flexDirection: 'row', marginVertical: 5 }}>
                 <View style={{ backgroundColor: "white", flex: 1, height: 80, marginHorizontal: 5, borderRadius: 4, elevation: 20 }}>
                     <View style={{ flexDirection: 'row', marginVertical: 5, }}>
                         <Text style={{ color: 'black' }}>The Service is top tier! Reccomended!</Text>
@@ -98,7 +98,7 @@ function MyWorkshop({ navigation, route }) {
                         </View>
                     </View>
                 </View>
-            </View>
+            </View> */}
             <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10 }}>
                 <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Roboto-Light' }}>Address</Text>
             </View>
@@ -139,7 +139,7 @@ function MyWorkshop({ navigation, route }) {
                     <Text>What are pitstop speciality?</Text>
                 </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'center', marginTop: 40, justifyContent: 'center' }}>
+            <View style={{ flex: 1, alignItems: 'center', marginTop: 70, justifyContent: 'center' }}>
                 <View style={{ width: '80%', height: '60%' }}>
                     <Button
                         color={'#b22222'}
