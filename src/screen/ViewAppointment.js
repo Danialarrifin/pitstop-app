@@ -151,6 +151,16 @@ function ViewAppointment({ navigation }) {
                             }}>
                             <Text style={{ color: 'white' }}>Status </Text>
                         </View>
+                        <View
+                            style={{
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderWidth: 2,
+                                flex: 1,
+                                height: '100%',
+                            }}>
+                            <Text style={{ color: 'white' }}></Text>
+                        </View>
                     </View>
 
                     {appointment.length > 0 ?
@@ -233,6 +243,23 @@ function ViewAppointment({ navigation }) {
                                             borderTopWidth: 0,
                                         }}>
                                         <Text>{item.status}</Text>
+                                    </View>
+                                    <View
+                                        style={{
+                                            justifyContent: 'center',
+                                            alignItems: 'center',
+                                            borderWidth: 2,
+                                            flex: 1,
+                                            height: '100%',
+                                            borderTopWidth: 0,
+                                        }}>
+                                        <View style={{ width: '70%', height: '90%' }}>
+                                            <Button
+                                                color={'#b22222'}
+                                                title="Delete"
+                                                onPress={() => navigation.navigate(PATH_HOME.myworkshop)}
+                                            />
+                                        </View>
                                     </View>
                                 </View>
                             )
