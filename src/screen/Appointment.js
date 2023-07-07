@@ -172,7 +172,7 @@ function Appointment({ navigation, route }) {
       })
       .then(res => {
         console.log(res.data)
-        navigation.goBack()
+        navigation.navigate(PATH_HOME.appointmentconfirmation)
       })
       .catch(e => {
         console.log(`add appointment error ${e}`);
@@ -199,7 +199,7 @@ function Appointment({ navigation, route }) {
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => setDatePickerVisible(!datePickerVisible)}>
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>Close Calendar</Text>
             </Pressable>
           </View>
         </View>
@@ -212,7 +212,12 @@ function Appointment({ navigation, route }) {
       </View>
       <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 20 }}>
         <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold', }}>{workshop?.name}</Text>
-        <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{workshop?.contact_num}</Text>
+        <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+          <Text>
+            <AntDesgin name='phone' style={{ color: 'black', fontSize: 30 }} />
+          </Text>
+          <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{workshop?.contact_num}</Text>
+        </View>
       </View>
       {/* <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
         <Text>
