@@ -44,39 +44,38 @@ function Profile({ navigation, route }) {
           <AntDesgin name='user' style={{ color: 'white', fontSize: 100 }} />
         </Text>
       </View>
-      <View style={{alignItems:'center'}}>
-        <Text style={{ marginTop: 10, color: 'firebrick', fontSize: 30, fontFamily: 'Roboto-Bold', marginLeft: 10 }} onPress={() => navigation.navigate(PATH_HOME.vehicle)}>Profile</Text>
+      <View style={{ alignItems: 'center' }}>
+        <Text style={{ marginTop: 10, color: 'firebrick', fontSize: 30, fontFamily: 'Roboto-Medium', marginLeft: 10 }} onPress={() => navigation.navigate(PATH_HOME.vehicle)}>Profile</Text>
       </View>
       <View style={{ borderBottomColor: '#ccc', borderBottomWidth: 1, marginVertical: 10, width: '100%' }} />
-      <View style={{ justifyContent: 'flex-start', margin: 20 }}>
-        <View style={{ flexDirection: 'row', marginVertical: 5, }}>
+      <View style={{ justifyContent: 'flex-start', margin: 20, }}>
+        <View style={{ flexDirection: 'row', marginVertical: 5 }}>
           <Text style={{ color: 'white', marginRight: 80 }}><AntDesgin name='user' style={{ color: 'firebrick', fontSize: 30 }} /></Text>
-          <Text style={{ color: 'firebrick', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{profile?.name}</Text>
+          <Text style={{ color: 'firebrick', fontSize: 20, fontFamily: 'Roboto-LightItalic' }}>{profile?.name}</Text>
         </View>
       </View>
-      {/* <View style={{ borderBottomColor: '#ccc', borderBottomWidth: 1, marginVertical: 10, width: '100%' }} /> */}
-      {/* <View style={{  justifyContent: 'flex-start', margin: 20 }}>
-        <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-          <Text style={{ color: 'white', marginRight: 80 }}><AntDesgin name='phone' style={{ color: 'firebrick', fontSize:30 }} /></Text>
-          <Text style={{ color: 'firebrick', fontSize:20 }}>01932765472</Text>
-        </View>
-      </View> */}
       <View style={{ borderBottomColor: '#ccc', borderBottomWidth: 1, marginVertical: 10, width: '100%' }} />
       <View style={{ justifyContent: 'flex-start', margin: 20 }}>
         <View style={{ flexDirection: 'row', marginVertical: 5, }}>
           <Text style={{ color: 'white', marginRight: 80, }}><AntDesgin name='mail' style={{ color: 'firebrick', fontSize: 30 }} /></Text>
-          <Text style={{ color: 'firebrick', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{profile?.email}</Text>
+          <Text style={{ color: 'firebrick', fontSize: 20, fontFamily: 'Roboto-LightItalic' }}>{profile?.email}</Text>
         </View>
       </View>
       <View style={{ borderBottomColor: '#ccc', borderBottomWidth: 1, marginVertical: 10, width: '100%' }} />
       <View style={{ justifyContent: 'flex-start', margin: 20 }}>
         <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-          <Text style={{ color: 'white', marginRight: 80 }}><AntDesgin name='car' style={{ color: 'firebrick', fontSize: 30 }} /></Text>
-          <Text style={{ color: 'firebrick', fontSize: 20, fontFamily: 'Roboto-Bold' }} onPress={() => navigation.navigate(PATH_HOME.vehicle)}> My Vehicle</Text>
+          <Text style={{ color: 'white', marginRight: 80 }} onPress={() => navigation.navigate(PATH_HOME.vehicle)}><AntDesgin name='car' style={{ color: 'firebrick', fontSize: 30 }} /></Text>
+          <Text style={{ color: 'firebrick', fontSize: 20, fontFamily: 'Roboto-LightItalic' }} > My Vehicle</Text>
         </View>
       </View>
       <View style={{ borderBottomColor: '#ccc', borderBottomWidth: 1, marginVertical: 10, width: '100%' }} />
-
+      <View style={{ justifyContent: 'flex-start', margin: 20 }}>
+        <View style={{ flexDirection: 'row', marginVertical: 5, }}>
+          <Text style={{ color: 'white', marginRight: 80 }} onPress={() => navigation.navigate(PATH_HOME.myappointment)}><AntDesgin name='calendar' style={{ color: 'firebrick', fontSize: 30 }} /></Text>
+          <Text style={{ color: 'firebrick', fontSize: 20, fontFamily: 'Roboto-LightItalic' }}>My Appointments</Text>
+        </View>
+      </View>
+      {/* 
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <View style={{ width: '80%', height: '60%', }}>
           <Button
@@ -84,7 +83,7 @@ function Profile({ navigation, route }) {
             title="Update Profile"
           />
         </View>
-      </View>
+      </View> */}
     </>
 
   );

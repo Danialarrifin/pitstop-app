@@ -49,30 +49,31 @@ function MyAppointment({ navigation }) {
                 renderItem={({ item }) => (
                     <>
                         <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 10, paddingVertical: 30, marginHorizontal: 40, marginVertical: 10, elevation: 10, justifyContent: 'center', width: '80%' }}>
-                            <Text style={{ color: 'white' }}>{item.workshop_name}</Text>
+                            <Text style={{ color: 'white', fontSize: 15, fontFamily: 'Roboto-BoldItalic' }}>{item.workshop_name}</Text>
                             <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                                    <Text style={{ color: 'white', marginRight: 5 }}><AntDesgin name='setting' style={{ color: 'white', fontSize: 20 }} /></Text>
-                                    <Text style={{ color: 'white' }}>{item.service_name}</Text>
-                                </View>
-                                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                                    <Text style={{ color: 'white', marginRight: 5 }}><AntDesgin name='clockcircleo' style={{ color: 'white', fontSize: 20 }} /></Text>
-                                    <Text style={{ color: 'white' }}>{item.start_time + '-' + item.end_time}</Text>
-                                </View>
-                                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                                    <Text style={{ color: 'white', marginRight: 5 }}><AntDesgin name='car' style={{ color: 'white', fontSize: 20 }} /></Text>
-                                    <Text style={{ color: 'white' }}>{item.model}</Text>
-                                </View>
-                                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                                    <Text style={{ color: 'white', marginRight: 5 }}><AntDesgin name='car' style={{ color: 'white', fontSize: 20 }} /></Text>
-                                    <Text style={{ color: 'white' }}>{item.status}</Text>
-                                </View>
+                                <Text style={{ color: 'white', marginRight: 5 }}><AntDesgin name='setting' style={{ color: 'white', fontSize: 20 }} /></Text>
+                                <Text style={{ color: 'white' }}>{item.service_name}</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', marginVertical: 5, }}>
+                                <Text style={{ color: 'white', marginRight: 5 }}><AntDesgin name='clockcircleo' style={{ color: 'white', fontSize: 20 }} /></Text>
+                                <Text style={{ color: 'white' }}>{item.start_time + '-' + item.end_time}</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', marginVertical: 5, }}>
+                                <Text style={{ color: 'white', marginRight: 5 }}><AntDesgin name='car' style={{ color: 'white', fontSize: 20 }} /></Text>
+                                <Text style={{ color: 'white' }}>{item.model}</Text>
+                            </View>
+                            <View style={{ flexDirection: 'row', marginVertical: 5, }}>
+                                <Text style={{ color: 'white', marginRight: 5 }}><AntDesgin name='loading1' style={{ color: 'white', fontSize: 20 }} /></Text>
+                                <Text style={{ color: 'white' }}>{item.status}</Text>
+                            </View>
                         </View>
-                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <View style={{ backgroundColor: "white", width: '30%', marginHorizontal: 5, borderRadius: 4, alignItems: 'center', justifyContent: 'center', elevation: 20, marginBottom: 10, }}>
-                                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                                    <Text style={{ color: 'firebrick', marginRight: 5 }}><AntDesgin name='close' style={{ color: 'firebrick', fontSize: 20 }} /></Text>
-                                    <Text style={{ color: 'firebrick' }}>Cancel</Text>
-                                </View>
+                        <View style={{ flex: 1, alignItems: 'center',justifyContent: 'center' }}>
+                            <View style={{ width: '40%', height: '100%' }}>
+                                <Button
+                                    color={'#b22222'}
+                                    title="Cancel Appointment"
+                                    // onPress={() => navigation.navigate(PATH_HOME.viewappointment)}
+                                />
                             </View>
                         </View>
                     </>

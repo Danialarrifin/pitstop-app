@@ -49,7 +49,7 @@ function Vehicle({ navigation }) {
                 renderItem={({ item }) => (
                     <>
                         <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 10, paddingVertical: 30, marginHorizontal: 40, marginVertical: 10, elevation: 10, justifyContent: 'center', width: '80%' }}>
-                            <Text style={{ color: 'white' }}>{item.manufacturer}</Text>
+                            <Text style={{ color: 'white', fontSize: 20, fontFamily: 'Roboto-BoldItalic' }}>{item.manufacturer}</Text>
                             <Text style={{ color: 'white' }}>{item.model}</Text>
                         </View>
                         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
