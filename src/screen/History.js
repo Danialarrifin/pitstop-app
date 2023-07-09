@@ -1,14 +1,14 @@
-import React, { useContext, useState,useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, SafeAreaView, FlatList } from 'react-native';
 import { PATH_AUTH, PATH_HOME } from '../navigations/path';
 import AntDesgin from 'react-native-vector-icons/AntDesign'
 import axiosInstance from '../utils/axios';
 
 
 function History({ navigation }) {
-const [transaction, setTransaction] = useState([]);
-const { login, userInfo } = useContext(AuthContext);
+  const [transaction, setTransaction] = useState([]);
+  const { login, userInfo } = useContext(AuthContext);
 
   useEffect(() => {
     getAllTransaction();
@@ -32,40 +32,29 @@ const { login, userInfo } = useContext(AuthContext);
     }
   }
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={{ backgroundColor: 'firebrick', borderBottomEndRadius: 4, height: '10%' }} >
         <View style={{ flexDirection: 'row', marginVertical: 5 }}>
           <AntDesgin name='arrowleft' style={{ color: 'white', fontSize: 20, marginTop: 20, marginLeft: 10 }} onPress={() => navigation.navigate(PATH_HOME.dashboard)} />
-          <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 110, color: 'white' }}> Transaction History </Text>
+          <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 100, color: 'white' }}> Transaction History</Text>
         </View>
       </View>
-      <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 30 }}>
-        <Text style={{ fontSize: 20, marginBottom: 10, color: 'firebrick', fontFamily: 'Roboto-Bold' }}>Transaction History</Text>
-      </View>
-      {transaction.length > 0 ?
-        transaction.map((item) => {
-          return (
-            <>
-              <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 30, height: '30%', marginLeft: 30, marginBottom: 10, elevation: 10, justifyContent: 'center', width: '85%' }}>
-                <Text style={{ fontSize: 20, marginBottom: 5, color: 'white' }}>Pohleh Workshop Sdn Bhd</Text>
-                <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                  <AntDesgin name='calendar' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                  <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>{item.appointment_id}</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                  <AntDesgin name='car' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                  <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>{item.remarks}</Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                  <AntDesgin name='pay-circle-o1' style={{ color: 'white', fontSize: 20, marginTop: 5 }} />
-                  <Text style={{ fontSize: 20, marginBottom: 5, color: 'white', marginLeft: 20 }}>{item.final_price}</Text>
-                </View>
-              </View>
-            </>
-          )
-        }) : null}
-
-    </>
+      <FlatList
+        showsVerticalScrollIndicator
+        data={transaction}
+        renderItem={({ item }) => (
+          <>
+            <View style={{ backgroundColor: 'firebrick', alignItems: 'center', borderRadius: 10, paddingVertical: 30, marginHorizontal: 40, marginVertical: 10, elevation: 10, justifyContent: 'center', width: '80%' }}>
+              <Text style={{ color: 'white', fontSize: 25, fontFamily: 'Roboto-BoldItalic' }}>Pohleh Sdn Bhd</Text>
+              {/* <Text style={{ color: 'white', fontFamily: 'Roboto-BoldItalic' }}>{item.appointment_id}</Text> */}
+              <Text style={{ color: 'white', fontSize: 20, }}>{item.remarks}</Text>
+              <Text style={{ color: 'white' }}>{item.final_price}</Text>
+            </View>
+          </>
+        )}
+        keyExtractor={item => item.id}
+      />
+    </SafeAreaView>
   );
 }
 
