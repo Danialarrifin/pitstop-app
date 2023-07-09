@@ -34,7 +34,7 @@ function AddVehicle({ navigation }) {
       })
       .then(res => {
         console.log(res.data)
-        navigation.goBack()
+        navigation.navigate(PATH_HOME.vehicle)
       })
       .catch(e => {
         console.log(`add vehicle error ${e}`);
