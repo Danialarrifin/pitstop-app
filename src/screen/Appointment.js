@@ -106,7 +106,7 @@ function Appointment({ navigation, route }) {
         let _timeSlotList = [];
         response.data.forEach(element => {
           _timeSlotList.push({
-            label: element?.start_time,
+            label: element?.start_time + ' - ' + element?.end_time,
             value: element?.id
           });
         });
