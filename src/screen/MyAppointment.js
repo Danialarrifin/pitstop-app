@@ -34,6 +34,23 @@ function MyAppointment({ navigation }) {
             console.log(err);
         }
     }
+    const deleteAppointment = async (appointmentId) => {
+        try {
+            const response = await axiosInstance.get(
+                `/appointments/delete?appointmentId=${appointmentId}`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${userInfo?.access_token}`
+                    }
+                }
+            );
+            console.log('response appointment', response.data);
+            if (response.data)
+                getAppointment();
+        } catch (err) {
+            console.log(err);
+        }
+    }
     return (
 
         <SafeAreaView style={{ flex: 1 }}>
@@ -72,7 +89,7 @@ function MyAppointment({ navigation }) {
                                 <Button
                                     color={'#b22222'}
                                     title="Cancel Appointment"
-                                    // onPress={() => navigation.navigate(PATH_HOME.viewappointment)}
+                                    onPress={() => deleteAppointment(item.id)}
                                 />
                             </View>
                         </View>

@@ -32,6 +32,23 @@ function ViewAppointment({ navigation }) {
             console.log(err);
         }
     }
+    const deleteAppointment = async (appointmentId) => {
+        try {
+            const response = await axiosInstance.get(
+                `/appointments/delete?appointmentId=${appointmentId}`,
+                {
+                    headers: {
+                        'Authorization': `Bearer ${userInfo?.access_token}`
+                    }
+                }
+            );
+            console.log('response appointment', response.data);
+            if (response.data)
+                getAppointment();
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
     return (
         <>
@@ -219,8 +236,10 @@ function ViewAppointment({ navigation }) {
                                             flex: 1,
                                             height: '100%',
                                             borderTopWidth: 0,
+                                            
                                         }}>
-                                        <Text>{item.model}</Text>
+                                        <Text style={{fontSize: 10}}>{item.model}</Text>
+                                        <Text style={{fontSize: 10}}>{item.plate_num}</Text>
                                     </View>
                                     <View
                                         style={{
@@ -257,7 +276,7 @@ function ViewAppointment({ navigation }) {
                                             <Button
                                                 color={'#b22222'}
                                                 title="Delete"
-                                                onPress={() => navigation.navigate(PATH_HOME.myworkshop)}
+                                                onPress={() => deleteAppointment(item.id)}
                                             />
                                         </View>
                                     </View>
