@@ -41,11 +41,6 @@ function MyWorkshop({ navigation, route }) {
                     <Text style={{ marginTop: 18, fontSize: 15, marginLeft: 120, color: 'white' }}> My Workshop</Text>
                 </View>
             </View>
-            {/* <View style={{ backgroundColor: 'firebrick', alignItems: 'center', justifyContent: 'center', borderBottomEndRadius: 4, height: '25%' }} >
-                <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                    <Text style={{ marginTop: 30, color: 'white', fontSize: 30, fontFamily: 'Roboto-Bold' }} onPress={() => navigation.navigate(PATH_HOME.vehicle)}>IMAGE</Text>
-                </View>
-            </View> */}
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
                 <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{workshop?.name}</Text>
                 <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{workshop?.contact_num}</Text>
@@ -57,48 +52,8 @@ function MyWorkshop({ navigation, route }) {
                     <AntDesgin name='star' style={{ color: 'yellow', fontSize: 30 }} />
                     <AntDesgin name='star' style={{ color: 'yellow', fontSize: 30 }} />
                 </Text>
-                <Text>(4/5)</Text>
+                <Text style={{color:'black'}}>(4/5)</Text>
             </View>
-            {/* <View style={{ flexDirection: 'row', marginVertical: 5 }}>
-                <View style={{ backgroundColor: "white", flex: 1, height: 80, marginHorizontal: 5, borderRadius: 4, elevation: 20 }}>
-                    <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                        <Text style={{ color: 'black' }}>The Service is top tier! Reccomended!</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row' }}>
-                        <View style={{ justifyContent: 'flex-start', flexDirection: 'row', marginTop: 17 }}>
-                            <Text>
-                                <AntDesgin name='star' style={{ color: 'yellow', fontSize: 15 }} />
-                                <AntDesgin name='star' style={{ color: 'yellow', fontSize: 15 }} />
-                                <AntDesgin name='star' style={{ color: 'yellow', fontSize: 15 }} />
-                                <AntDesgin name='star' style={{ color: 'yellow', fontSize: 15 }} />
-                            </Text>
-                            <Text style={{ fontSize: 10 }}>(4/5)</Text>
-                        </View>
-                        <View style={{ justifyContent: 'flex-end', marginLeft: 60 }}>
-                            <Text>Mirza</Text>
-                        </View>
-                    </View>
-                </View>
-                <View style={{ backgroundColor: "white", flex: 1, height: 80, marginHorizontal: 5, borderRadius: 4, elevation: 20 }}>
-                    <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                        <Text style={{ color: 'black' }}>Highly Reccomended! Good service and workmanship.</Text>
-                    </View>
-                    <View style={{ flexDirection: 'row' }}>
-                        <View style={{ justifyContent: 'flex-start', flexDirection: 'row', marginTop: 17 }}>
-                            <Text>
-                                <AntDesgin name='star' style={{ color: 'yellow', fontSize: 15 }} />
-                                <AntDesgin name='star' style={{ color: 'yellow', fontSize: 15 }} />
-                                <AntDesgin name='star' style={{ color: 'yellow', fontSize: 15 }} />
-                                <AntDesgin name='star' style={{ color: 'yellow', fontSize: 15 }} />
-                            </Text>
-                            <Text style={{ fontSize: 10 }}>(4/5)</Text>
-                        </View>
-                        <View style={{ justifyContent: 'flex-end', marginLeft: 60 }}>
-                            <Text>Mirza</Text>
-                        </View>
-                    </View>
-                </View>
-            </View> */}
             <View style={{ alignItems: 'center', justifyContent: 'center', marginTop: 10 }}>
                 <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Roboto-Light' }}>Address</Text>
             </View>
@@ -124,30 +79,30 @@ function MyWorkshop({ navigation, route }) {
                 }}
             >
                 <View style={{ width: '80%' }}>
-                    <Text style={{}}>FAQs</Text>
+                    <Text style={{color:'black'}}>FAQs</Text>
                 </View>
 
                 <View style={{ width: '80%', height: '30%', backgroundColor: 'red', margin: 2, alignItems: 'center', justifyContent: 'center', backgroundColor: 'gainsboro', }}>
-                    <Text>What is PITSTOP?</Text>
+                    <Text style={{color:'black'}}>What is PITSTOP?</Text>
                 </View>
 
                 <View style={{ width: '80%', height: '30%', backgroundColor: 'red', margin: 2, alignItems: 'center', justifyContent: 'center', backgroundColor: 'gainsboro' }}>
-                    <Text>Does PITSTOP charge a membership fee?</Text>
+                    <Text style={{color:'black'}}>Does PITSTOP charge a membership fee?</Text>
                 </View>
 
                 <View style={{ width: '80%', height: '30%', backgroundColor: 'red', margin: 2, alignItems: 'center', justifyContent: 'center', backgroundColor: 'gainsboro' }}>
-                    <Text>What are pitstop speciality?</Text>
+                    <Text style={{color:'black'}}>What are pitstop speciality?</Text>
                 </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'center', marginTop: 70, justifyContent: 'center' }}>
-                <View style={{ width: '80%', height: '60%' }}>
+            <View style={{ flex: 1, alignItems: 'center', marginTop: 10, justifyContent: 'center' }}>
+                <View style={{ width: '80%', height: '40%' }}>
                     <Button
                         color={'#b22222'}
                         title="View Appointments"
                         onPress={() => navigation.navigate(PATH_HOME.viewappointment)}
                     />
                 </View>
-                <View style={{ width: '80%', height: '60%' }}>
+                <View style={{ width: '80%'}}>
                     <Button
                         color={'#b22222'}
                         title="View Vehicles"
@@ -155,15 +110,6 @@ function MyWorkshop({ navigation, route }) {
                     />
                 </View>
             </View>
-            {/* <View style={{ flex: 1, alignItems: 'center',  backgroundColor: 'yellow', justifyContent: 'center', height: '60%' }}>
-                <View style={{ width: '80%', height: '60%'}}>
-                    <Button
-                        color={'#b22222'}
-                        title="View Vehicles"
-                        onPress={() => navigation.navigate(PATH_HOME.viewvehicle)}
-                    />
-                </View>
-            </View> */}
         </>
     );
 }

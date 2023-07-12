@@ -14,15 +14,15 @@ function Register({ navigation }) {
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <View style={{ width: '80%', height: '60%' }}>
                 <Text style={{ color: 'firebrick' }}>Name</Text>
-                <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={name}
+                <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color:'black', borderRadius: 4 }} value={name}
                     onChangeText={text => setName(text)} />
 
                 <Text style={{ color: 'firebrick' }}>Email address</Text>
-                <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={email}
+                <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color:'black',  borderRadius: 4 }} value={email}
                     onChangeText={text => setEmail(text)} />
 
                 <Text style={{ color: 'firebrick' }}>Password</Text>
-                <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={password}
+                <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color:'black',  borderRadius: 4 }} value={password}
                     onChangeText={text => setPassword(text)} secureTextEntry />
 
                 <Button
@@ -37,8 +37,8 @@ function Register({ navigation }) {
                     }}
                 />
                 <View style={{ flexDirection: 'row', justifyContent: 'center', alignContent: 'center', marginTop: 10 }}>
-                    <Text>Already have an account? </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate(PATH_AUTH.login)}><Text>Login Here</Text></TouchableOpacity>
+                    <Text style={{color:'black'}}>Already have an account? </Text>
+                    <TouchableOpacity onPress={() => navigation.navigate(PATH_AUTH.login)}><Text style={{color:'black'}}>Login Here</Text></TouchableOpacity>
                 </View>
             </View>
 

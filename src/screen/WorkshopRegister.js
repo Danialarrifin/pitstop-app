@@ -21,42 +21,42 @@ function WorkshopRegister({ navigation }) {
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
                 <View style={{ width: '80%' }}>
                     <Text style={{ color: 'firebrick' }}>Name</Text>
-                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }}  value={name}
+                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color:'black', borderRadius: 4 }}  value={name}
                         onChangeText={text => setName(text)}/>
                 </View>
                 <View style={{ width: '80%' }}>
                     <Text style={{ color: 'firebrick' }} >Phone Number</Text>
-                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={contact}
+                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color:'black', borderRadius: 4 }} value={contact}
                         onChangeText={text => setContactNum(text)} />
                 </View>
                 <View style={{ width: '80%' }}>
                     <Text style={{ color: 'firebrick' }} >Email Address</Text>
-                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={email}
+                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color:'black', borderRadius: 4 }} value={email}
                         onChangeText={text => setEmail(text)}/>
                 </View>
                 <View style={{ width: '80%' }}>
                     <Text style={{ color: 'firebrick' }}> Address</Text>
-                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={address}
+                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color:'black', borderRadius: 4 }} value={address}
                         onChangeText={text => setAddress(text)}/>
                 </View>
                 <View style={{ width: '80%' }}>
                     <Text style={{ color: 'firebrick' }} > State</Text>
-                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={state}
+                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color:'black', borderRadius: 4 }} value={state}
                         onChangeText={text => setState(text)}/>
                 </View>
                 <View style={{ width: '80%' }}>
                     <Text style={{ color: 'firebrick' }} > Postcode</Text>
-                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={postcode}
+                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color:'black', borderRadius: 4 }} value={postcode}
                         onChangeText={text => setPostcode(text)}/>
                 </View>
                 <View style={{ width: '80%' }}>
                     <Text style={{ color: 'firebrick' }} > City</Text>
-                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={city}
+                    <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color:'black', borderRadius: 4 }} value={city}
                         onChangeText={text => setCity(text)}/>
                 </View>
                 <View style={{ width: '80%' }}>
                     <Text style={{ color: 'firebrick' }} > Password</Text>
-                    <TextInput secureTextEntry style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={password}
+                    <TextInput secureTextEntry style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color:'black', borderRadius: 4 }} value={password}
                         onChangeText={text => setPassword(text)}/>
                 </View>
                 <View style={{ width: '80%' }}>

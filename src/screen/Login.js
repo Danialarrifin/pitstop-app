@@ -18,7 +18,7 @@ function Login({ navigation }) {
                 <Text style={{ color: 'firebrick' }} >Username</Text>
                 <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4, color: '#000000' }} value={email} onChangeText={text => setEmail(text)} />
                 <View style={{ flexDirection: 'row', justifyContent: 'flex-end', marginTop: 10 }}>
-                    <TouchableOpacity onPress={() => navigation.navigate(PATH_AUTH.forgotpassword)}><Text>Forgot your password?</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate(PATH_AUTH.forgotpassword)}><Text style={{color:'black'}}>Forgot your password?</Text></TouchableOpacity>
                 </View>
                 <Text style={{ color: 'firebrick' }}>Password</Text>
                 <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4, color: '#000000' }}  value={password}   onChangeText={text => setPassword(text)}

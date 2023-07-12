@@ -53,15 +53,15 @@ function AddVehicle({ navigation }) {
       <View style={{ alignItems: 'center', justifyContent: 'center', }}>
         <View style={{ width: '80%', height: '60%', }}>
           <Text style={{ color: 'firebrick' }}>Manufacturer</Text>
-          <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={manufacturer} onChangeText={text => setManufacturer(text)} />
+          <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color: 'black', borderRadius: 4 }} value={manufacturer} onChangeText={text => setManufacturer(text)} />
           <View style={{ flexDirection: 'row', marginVertical: 5, marginBottom: 15 }}>
             <Text style={{ color: 'firebrick', marginRight: 5 }}><AntDesgin name='car' style={{ color: 'firebrick', fontSize: 20 }} /></Text>
             <Text style={{ color: 'firebrick' }}>Insert Image</Text>
           </View>
           <Text style={{ color: 'firebrick' }}>Model</Text>
-          <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={model} onChangeText={text => setModel(text)} />
+          <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color: 'black', borderRadius: 4 }} value={model} onChangeText={text => setModel(text)} />
           <Text style={{ color: 'firebrick' }}>Plate Number</Text>
-          <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 4 }} value={plateNum} onChangeText={text => setPlateNum(text)} />
+          <TextInput style={{ height: 50, width: 'auto', marginBottom: 15, borderColor: 'black', borderWidth: 1, backgroundColor: 'white', color: 'black', borderRadius: 4 }} value={plateNum} onChangeText={text => setPlateNum(text)} />
           <Button
             color={'#b22222'}
             title="Add Vehicle"

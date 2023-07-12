@@ -46,6 +46,7 @@ function Items({ navigation }) {
         renderItem={({ item }) => (
           <View style={{ backgroundColor: 'white', alignItems: 'center', borderRadius: 50, paddingVertical: 30, marginHorizontal: 40, marginVertical: 10, elevation: 10, justifyContent: 'center', width: '80%' }}>
             <Text style={{ color: 'firebrick', fontSize: 20, fontFamily: 'Roboto-Medium' }} >{item.name}</Text>
+            <Text style={{ color: 'firebrick',  fontFamily: 'Roboto-LightItalic' }}>{item.description}</Text>
             <View style={{ flexDirection: 'row', marginVertical: 5, }}>
           <Text style={{ color: 'white', marginRight: 20, color: 'firebrick', fontSize: 20 }}>Cost:</Text>
           <Text style={{ color: 'firebrick', fontSize: 20, fontFamily: 'Roboto-LightItalic' }}>{item.price}</Text>

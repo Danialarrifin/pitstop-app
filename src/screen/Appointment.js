@@ -219,14 +219,14 @@ function Appointment({ navigation, route }) {
           <Text style={{ color: 'black', fontSize: 20, fontFamily: 'Roboto-Bold' }}>{workshop?.contact_num}</Text>
         </View>
       </View>
-      {/* <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
+      <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
         <Text>
           <AntDesgin name='star' style={{ color: 'yellow', fontSize: 30 }} />
           <AntDesgin name='star' style={{ color: 'yellow', fontSize: 30 }} />
           <AntDesgin name='star' style={{ color: 'yellow', fontSize: 30 }} />
           <AntDesgin name='star' style={{ color: 'yellow', fontSize: 30 }} />
         </Text>
-        <Text>(4/5)</Text>
+        <Text style={{color: 'black'}}>(4/5)</Text>
       </View>
       <View style={{ flexDirection: 'row', marginVertical: 5, marginBottom: 30 }}>
         <View style={{ backgroundColor: "white", flex: 1, height: 80, marginHorizontal: 5, borderRadius: 4, elevation: 20 }}>
@@ -267,7 +267,7 @@ function Appointment({ navigation, route }) {
             </View>
           </View>
         </View>
-      </View> */}
+      </View>
       <View style={{ alignItems: 'center', justifyContent: 'center' }}>
         <Text style={{ color: 'black', fontSize: 15, fontFamily: 'Roboto-Light' }}>Address</Text>
       </View>
@@ -286,7 +286,7 @@ function Appointment({ navigation, route }) {
         </View>
         <View style={{ flexDirection: 'row', marginVertical: 5, zIndex: 99 }}>
           <TouchableOpacity style={{ marginLeft: 30, height: 50, width: '30%', borderColor: 'black', borderWidth: 1, backgroundColor: 'white', borderRadius: 10, }} onPress={() => setDatePickerVisible(!datePickerVisible)}>
-            <Text style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ alignItems: 'center', justifyContent: 'center', color: 'black'}}>
               <AntDesgin name='calendar' style={{ color: 'black', fontSize: 15 }} />
               {selectedDate ? selectedDate : 'No date selected'}
             </Text>
@@ -302,6 +302,10 @@ function Appointment({ navigation, route }) {
             setValue={setTimeSlotValue}
             setItems={setTimeSlot}
             listMode="SCROLLVIEW"
+            scrollViewProps={{
+              nestedScrollEnabled: true,
+            }}
+            
           />
         </View>
         <View style={{ zIndex: 88 }}>
@@ -320,7 +324,6 @@ function Appointment({ navigation, route }) {
               setValue={setVehicleValue}
               setItems={setVehicle}
               listMode="SCROLLVIEW"
-
             />
           </View>
           <View style={{ zIndex: 88 }}>

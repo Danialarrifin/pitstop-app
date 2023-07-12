@@ -202,7 +202,7 @@ function ViewAppointment({ navigation }) {
                                             borderTopWidth: 0,
                                             borderRightWidth: 0,
                                         }}>
-                                        <Text>{item.user_name}</Text>
+                                        <Text style={{fontSize: 10, color: 'black'}}>{item.user_name}</Text>
                                     </View>
                                     <View
                                         style={{
@@ -214,7 +214,7 @@ function ViewAppointment({ navigation }) {
                                             borderTopWidth: 0,
                                             borderRightWidth: 0,
                                         }}>
-                                        <Text>{item.date}</Text>
+                                        <Text style={{fontSize: 10, color: 'black'}}>{item.date}</Text>
                                     </View>
                                     <View
                                         style={{
@@ -226,7 +226,7 @@ function ViewAppointment({ navigation }) {
                                             borderTopWidth: 0,
                                             borderRightWidth: 0,
                                         }}>
-                                        <Text>{item.start_time + '-' + item.end_time}</Text>
+                                        <Text style={{fontSize: 10, color: 'black'}}>{item.start_time + '-' + item.end_time}</Text>
                                     </View>
                                     <View
                                         style={{
@@ -238,8 +238,8 @@ function ViewAppointment({ navigation }) {
                                             borderTopWidth: 0,
                                             
                                         }}>
-                                        <Text style={{fontSize: 10}}>{item.model}</Text>
-                                        <Text style={{fontSize: 10}}>{item.plate_num}</Text>
+                                        <Text style={{fontSize: 10, color: 'black'}}>{item.model}</Text>
+                                        <Text style={{fontSize: 10, color: 'black'}}>{item.plate_num}</Text>
                                     </View>
                                     <View
                                         style={{
@@ -250,7 +250,7 @@ function ViewAppointment({ navigation }) {
                                             height: '100%',
                                             borderTopWidth: 0,
                                         }}>
-                                        <Text>{item.service_name}</Text>
+                                        <Text style={{fontSize: 10, color: 'black'}}>{item.service_name}</Text>
                                     </View>
                                     <View
                                         style={{
@@ -261,7 +261,7 @@ function ViewAppointment({ navigation }) {
                                             height: '100%',
                                             borderTopWidth: 0,
                                         }}>
-                                        <Text>{item.status}</Text>
+                                        <Text style={{fontSize: 10, color: 'black'}}>{item.status}</Text>
                                     </View>
                                     <View
                                         style={{

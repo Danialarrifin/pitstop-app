@@ -46,12 +46,6 @@ function Dashboard({ navigation }) {
               <Text style={{ color: 'white' }} onPress={() => navigation.navigate(PATH_HOME.workshop)}>Workshop</Text>
             </View>
           </View>
-          {/* <View style={{ backgroundColor: "white", flex: 1, height: 60, marginHorizontal: 5, borderRadius: 4, alignItems: 'center', justifyContent: 'center', elevation: 20 }}>
-          <View style={{ flexDirection: 'row', marginVertical: 5,}}>
-              <Text style={{color: 'firebrick', marginRight: 5  }}><AntDesgin name='book' style={{ color: 'firebrick', fontSize: 20 }} /></Text>
-              <Text style={{ color: 'firebrick' }} onPress={() => navigation.navigate(PATH_HOME.appointment)}>Book My Appointment</Text>
-            </View>
-          </View> */}
         </View>
 
         <View style={{ flexDirection: 'row', marginVertical: 5 }}>
@@ -77,19 +71,19 @@ function Dashboard({ navigation }) {
         }}
       >
         <View style={{ width: '80%' }}>
-          <Text style={{}}>FAQs</Text>
+          <Text style={{color: 'black'}}>FAQs</Text>
         </View>
 
         <View style={{ width: '80%', height: '20%', backgroundColor: 'red', margin: 5, alignItems: 'center', justifyContent: 'center', backgroundColor: 'gainsboro' }}>
-          <Text>What is PITSTOP?</Text>
+          <Text style={{color: 'black'}}>What is PITSTOP?</Text>
         </View>
 
         <View style={{ width: '80%', height: '20%', backgroundColor: 'red', margin: 5, alignItems: 'center', justifyContent: 'center', backgroundColor: 'gainsboro' }}>
-          <Text>Does PITSTOP charge a membership fee?</Text>
+          <Text style={{color: 'black'}}>Does PITSTOP charge a membership fee?</Text>
         </View>
 
         <View style={{ width: '80%', height: '20%', backgroundColor: 'red', margin: 5, alignItems: 'center', justifyContent: 'center', backgroundColor: 'gainsboro' }}>
-          <Text>What are pitstop speciality?</Text>
+          <Text style={{color: 'black'}}>What are pitstop speciality?</Text>
         </View>
       </View>
 

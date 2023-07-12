@@ -116,7 +116,7 @@ function ViewWorkshop({ navigation, route }) {
             </View>
 
 
-            <View style={{ flex: 1, alignItems: 'center', marginTop: 10 }}>
+            <View style={{ flex: 1, alignItems: 'center', marginTop: 50 }}>
                 <View style={{ width: '80%', height: '60%' }}>
                     <Button
                         color={'#b22222'}
@@ -125,8 +125,8 @@ function ViewWorkshop({ navigation, route }) {
                     />
                 </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'center', marginBottom: 50 }}>
-                <View style={{ width: '80%', height: '60%' }}>
+            <View style={{ flex: 1, alignItems: 'center', marginBottom: 150}}>
+                <View style={{ width: '80%',  }}>
                     <Button
                         color={'#b22222'}
                         title="Book An Appointment"
