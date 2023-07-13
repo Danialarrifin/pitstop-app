@@ -108,10 +108,7 @@ function ViewWorkshop({ navigation, route }) {
             </View>
             <View style={{ backgroundColor: "white", height: 70, marginHorizontal: 5, borderRadius: 4, elevation: 20, }}>
                 <View style={{ flexDirection: 'row', marginVertical: 5, }}>
-                    <Text style={{ color: 'black' }}>{workshop?.address_id?.address},</Text>
-                    <Text style={{ color: 'black', marginLeft: 5 }}>{workshop?.address_id?.city},</Text>
-                    <Text style={{ color: 'black', marginLeft: 5 }}>{workshop?.address_id?.postcode},</Text>
-                    <Text style={{ color: 'black', marginLeft: 5 }}>{workshop?.address_id?.state}</Text>
+                    <Text style={{ color: 'black' }}>{workshop?.address_id?.address + ' , ' + workshop?.address_id?.city + ' , ' + workshop?.address_id?.postcode + ' , ' + workshop?.address_id?.state}</Text>
                 </View>
             </View>
 
@@ -125,8 +122,8 @@ function ViewWorkshop({ navigation, route }) {
                     />
                 </View>
             </View>
-            <View style={{ flex: 1, alignItems: 'center', marginBottom: 150}}>
-                <View style={{ width: '80%',  }}>
+            <View style={{ flex: 1, alignItems: 'center', marginBottom: 150 }}>
+                <View style={{ width: '80%', }}>
                     <Button
                         color={'#b22222'}
                         title="Book An Appointment"
