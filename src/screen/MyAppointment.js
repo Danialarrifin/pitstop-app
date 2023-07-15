@@ -45,7 +45,6 @@ function MyAppointment({ navigation }) {
                 }
             );
             console.log('response appointment', response.data);
-            if (response.data)
                 getAppointment();
         } catch (err) {
             console.log(err);
