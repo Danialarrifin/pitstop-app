@@ -101,7 +101,7 @@ function MyWorkshop({ navigation, route }) {
                     <Button
                         color={'#b22222'}
                         title="View Appointments"
-                        onPress={() => navigation.navigate(PATH_HOME.viewappointment)}
+                        onPress={() => navigation.navigate(PATH_HOME.viewappointment, { workshopId: userInfo })}
                     />
                 </View>
                 <View style={{ width: '80%' }}>

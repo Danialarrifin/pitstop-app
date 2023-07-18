@@ -6,7 +6,7 @@ import axiosInstance from '../utils/axios';
 import { AuthContext } from '../context/AuthContext';
 
 
-function ViewAppointment({ navigation }) {
+function ViewAppointment({ navigation, route  }) {
     const [appointment, setAppointment] = useState([]);
     const { userInfo } = useContext(AuthContext);
 
@@ -17,8 +17,9 @@ function ViewAppointment({ navigation }) {
 
     const getAppointment = async () => {
         try {
+            console.log(route.params)
             const response = await axiosInstance.get(
-                `/appointments?workshopId`,
+                `/appointments?workshopId=${userInfo.workshop?.id}`,
                 {
                     headers: {
                         'Authorization': `Bearer ${userInfo?.access_token}`
