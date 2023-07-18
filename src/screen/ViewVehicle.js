@@ -142,7 +142,7 @@ const { userInfo } = useContext(AuthContext);
                     borderTopWidth: 0,
                     borderRightWidth: 0,
                   }}>
-                  <Text>{item.manufacturer}</Text>
+                  <Text  style={{color: 'black'}}>{item.manufacturer}</Text>
                 </View>
                 <View
                   style={{
@@ -154,7 +154,7 @@ const { userInfo } = useContext(AuthContext);
                     borderTopWidth: 0,
                     borderRightWidth: 0,
                   }}>
-                  <Text>{item.model}</Text>
+                  <Text  style={{color: 'black'}}>{item.model}</Text>
                 </View>
                 <View
                   style={{
@@ -165,7 +165,7 @@ const { userInfo } = useContext(AuthContext);
                     height: '100%',
                     borderTopWidth: 0,
                   }}>
-                  <Text>{item.plate_num}</Text>
+                  <Text  style={{color: 'black'}}>{item.plate_num}</Text>
                 </View>
               </View>
             ) : null}
